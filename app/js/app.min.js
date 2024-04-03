@@ -26,30 +26,20 @@ document.addEventListener("DOMContentLoaded", function() {
 				// },
 		});
 
-		// nestedSwiper.on('slideChange', function() {
-		// 	var activeSlideIndex = nestedSwiper.activeIndex;
-		// 	if (activeSlideIndex === 4) { // Якщо гортання приводить до п'ятого слайда
-		// 			nestedSwiper.slideTo(5); // Перехід до сьомого слайда внутрішнього слайдера
-		// 	}
-		// });
-
-		// var outerSliderContainer = document.querySelector('.wrap');
 		var innerSliderContainer = document.querySelector('.nested-slider');
 
-		// Відслідковуємо події наведення миші на внутрішній слайдер
 		innerSliderContainer.addEventListener('mouseenter', function() {
-				externalSwiper.mousewheel.disable(); // Вимикаємо прокрутку миші для зовнішнього слайдера
+				externalSwiper.mousewheel.disable();
 		});
 
 		nestedSwiper.on('slideChange', function() {
 			var activeSlideIndex = nestedSwiper.activeIndex;
-			// Перевіряємо, чи активний перший слайд внутрішнього слайдера
 			if (activeSlideIndex === 0) {
 				setTimeout(() => {
-					externalSwiper.mousewheel.enable(); // Увімкнемо прокрутку миші для зовнішнього слайдера, якщо активний перший слайд
+					externalSwiper.mousewheel.enable(); 
 				}, 400)
 			} else {
-					externalSwiper.mousewheel.disable(); // Вимикаємо прокрутку миші для зовнішнього слайдера, якщо не активний перший слайд
+					externalSwiper.mousewheel.disable();
 			}
 		});
 	
@@ -222,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					input.parentElement.append(div);
 					input.parentElement.classList.add('_error');
 					input.classList.add('_error');
-					setTimeout(formErorrRemove, 2000)
+					setTimeout(formErorrRemove, 3000)
 				}
 			
 				function formAddErrorCheck(input) {
@@ -233,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					input.parentElement.append(div);
 					input.parentElement.classList.add('_error');
 					input.classList.add('_error');
-					setTimeout(formErorrRemove, 2000)
+					setTimeout(formErorrRemove, 3000)
 				}
 			
 				function emailTest(input) {

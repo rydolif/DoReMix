@@ -414,9 +414,9 @@
 						</main>
 
 						<main class="main main--contacts swiper-slide">
+							<img src="img/gradient.svg" alt="" class="main--contacts__bg">
 							<div class="main__container container">
-					
-					
+
 								<div class="main--contacts__desc">
 									<h1 class="main__title main__title--uppercase">contact us</h1>
 	
@@ -521,10 +521,39 @@
 	
 						<main class="main main--footer swiper-slide">
 							<div class="main__container container">
+								<p class="main--footer__title">© 2024 TEENLY</p>
+								<p class="main--footer__copy">All rights reserved.</p>
 
+								<div class="main--footer__soc">
+									<a href="#">
+										<svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M37.3333 0.333374C38.571 0.333374 39.758 0.825039 40.6332 1.70021C41.5083 2.57538 42 3.76236 42 5.00004V37.6667C42 38.9044 41.5083 40.0914 40.6332 40.9665C39.758 41.8417 38.571 42.3334 37.3333 42.3334H4.66667C3.42899 42.3334 2.242 41.8417 1.36683 40.9665C0.491665 40.0914 0 38.9044 0 37.6667V5.00004C0 3.76236 0.491665 2.57538 1.36683 1.70021C2.242 0.825039 3.42899 0.333374 4.66667 0.333374H37.3333ZM36.1667 36.5V24.1334C36.1667 22.116 35.3652 20.1812 33.9387 18.7546C32.5122 17.3281 30.5774 16.5267 28.56 16.5267C26.5767 16.5267 24.2667 17.74 23.1467 19.56V16.97H16.6367V36.5H23.1467V24.9967C23.1467 23.2 24.5933 21.73 26.39 21.73C27.2564 21.73 28.0873 22.0742 28.6999 22.6868C29.3125 23.2994 29.6567 24.1303 29.6567 24.9967V36.5H36.1667ZM9.05333 13.3067C10.093 13.3067 11.09 12.8937 11.8252 12.1586C12.5603 11.4234 12.9733 10.4264 12.9733 9.38671C12.9733 7.21671 11.2233 5.44337 9.05333 5.44337C8.0075 5.44337 7.00449 5.85883 6.26498 6.59835C5.52546 7.33787 5.11 8.34087 5.11 9.38671C5.11 11.5567 6.88333 13.3067 9.05333 13.3067ZM12.2967 36.5V16.97H5.83333V36.5H12.2967Z" fill="white" />
+										</svg>
+									</a>
+								</div>
+
+								<nav class="main--footer__nav">
+									<p class="main--footer__subtitle">QUICK LINKS</p>
+									<ul class="main--footer__list">
+										<li class="main--footer__item"><a href="#" class="main--footer__link">Home</a></li>
+										<li class="main--footer__item"><a href="#" class="main--footer__link">Our Story</a></li>
+										<li class="main--footer__item"><a href="#" class="main--footer__link">Platforms</a></li>
+										<li class="main--footer__item"><a href="#" class="main--footer__link">Our Apps</a></li>
+										<li class="main--footer__item"><a href="#" class="main--footer__link">Contact Us</a></li>
+									</ul>
+								</nav>
+
+								<div class="main--footer__info">
+									<a href="#" class="main--footer__link">Terms of use </a>
+									<a href="#" class="main--footer__link">Privacy Policy</a>
+									<p><a href="#" class="main--footer__link">Don’t sell or share my personal information </a></p>
+								</div>
+
+								<p class="main--footer__img">Images by Freepik</p>
 							</div>
 						</main>
-	
+
+						<main class="main--debag swiper-slide"></main>
 					</div>
 				</div>
 			</div>
@@ -534,11 +563,6 @@
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-	<script>
-
-
-	</script>
 
 	<div class="modal" id="modal--contacts">
 		<form action="#" class="modal__form form" method="POST">
@@ -573,8 +597,7 @@
 				</div>
 
 				<div class="form__item">
-					<textarea name="message" placeholder="Message*"></textarea>
-					<input type="text" name="сompany" placeholder="Company Name*" class="form__input _req">
+					<textarea class="form__textarea" name="message" placeholder="Message*"></textarea>
 				</div>
 
 				<div class="form__btn">

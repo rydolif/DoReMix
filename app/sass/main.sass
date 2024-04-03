@@ -40,6 +40,7 @@
 	line-height: 100%
 	text-transform: capitalize
 	color: var(--main-white)
+	background: none
 
 	&::before
 		content: ''
@@ -141,7 +142,6 @@
 				top: 0
 				width: 25px
 				transform: rotate(-45deg)
-
 
 .header
 	position: fixed
@@ -257,6 +257,7 @@
 		justify-content: center
 		min-width: 550px
 		min-height: 550px
+		+transition
 
 		&_style
 			position: absolute
@@ -311,8 +312,8 @@
 	&--one,
 	&--two,
 	&--three,
-	&--four,
-	&--contacts
+	&--four
+		opacity: 0
 		background-color: #fff
 
 		&.swiper-slide-active,
@@ -430,7 +431,6 @@
 					top: 10%
 					left: 0%
 					transform: scale(1.3)
-
 
 	&--time
 		&__bg
@@ -752,21 +752,35 @@
 				&::before
 					left: 100%
 
-
 	&--contacts
 		background-image: url(../img/main--contacts.png)
-		// margin-left: 50%
-		transition: margin .4s !important
+		background-position: center bottom
+		transition: margin .4s, right .4s !important
+		background-color: #fff
+
+		&__bg
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			transform: rotateY(-180deg)
+			z-index: -1
 
 		&.swiper-slide-prev
 			margin-left: 60%
-			z-index: 101
 
-		// &.swiper-slide-prev
-		// 	margin-left: 50%
+			.main__img
+				right: 20%
+
+			.main--contacts__desc
+				opacity: 0
+
+		.main__img
+			top: 130px
 
 		&__desc
 			max-width: 700px
+			+transition
 
 		&__info
 			display: flex
@@ -801,52 +815,74 @@
 	&--footer
 		background: var(--main-main-blue)
 		padding: 55px 95px 30px
+		width: 50%
+
+		&__title
+			font-family: var(--second-family)
+			font-weight: 500
+			font-size: 32px
+			line-height: 125%
+			color: var(--main-white)
+			margin-bottom: 15px
+
+		&__copy
+			font-family: var(--third-family)
+			font-weight: 400
+			font-size: 18px
+			line-height: 133%
+			color: var(--main-white)
+
+		&__soc
+			display: flex
+			flex-wrap: wrap
+			gap: 10px
+
+		&__subtitle
+			font-family: var(--third-family)
+			font-weight: 400
+			font-size: 20px
+			line-height: 120%
+			color: var(--main-white)
+			margin-bottom: 15px
+
+		&__list
+			display: flex
+			flex-direction: column
+			flex-wrap: wrap
+			gap: 10px
+
+		&__link
+			font-family: var(--second-family)
+			font-weight: 400
+			font-size: 20px
+			line-height: 100%
+			text-transform: capitalize
+			color: var(--main-white)
+			text-decoration: underline
+
+			&:hover
+				color: #DBD4FF
+				text-decoration: none
+
+		&__info
+			display: flex
+			flex-wrap: wrap
+			gap: 15px 30px
+			margin-bottom: 32px
+
+			p
+				width: 100%
+
+		&__img
+			font-family: var(--third-family)
+			font-weight: 400
+			font-size: 14px
+			line-height: 114%
+			color: var(--main-white)
+			opacity: 0.8
+
+	&--debag
 		width: 40%
-
-		// &.swiper-slide-active
-		// 	margin-right: 50%
-
-// .swiper-slide-active
-// 	opacity: 1 !important
-// 	z-index: 50
-
-// #time
-// 	left: 0
-// 	transition-duration: 0s !important
-// 	transition: all 1s !important
-// 	z-index: -1
-
-// #time.swiper-slide-prev
-// 	left: -100vw
-// 	transition: all 1s, opacity 0s !important
-// 	opacity: 1 !important
-
-// #time.swiper-slide-active
-// 	left: 0
-
-// #products
-// 	transition: all 1s, opacity 0s !important
-// 	opacity: 0 !important
-
-// #products.swiper-slide-next
-// 	left: 100vw
-// 	transition-duration: 0s !important
-// 	transition: all 1s, opacity 1s !important
-// 	opacity: 1 !important
-// 	z-index: 50
-
-// #products.swiper-slide-prev
-// 	left: -100vw
-// 	transition: all 1s, opacity 2s !important
-// 	opacity: 1 !important
-// 	z-index: 50
-
-// #products.swiper-slide-active
-// 	left: 0vw
-// 	transition-duration: 0s !important
-// 	transition: all 1s, opacity 1s !important
-// 	opacity: 1 !important
-// 	z-index: 50
 
 .modal
 	display: flex
@@ -876,8 +912,8 @@
 
 	&__close
 		position: absolute
-		right: 0
-		top: -40px
+		right: 20px
+		top: 20px
 		display: block
 		width: 30px
 		height: 30px
@@ -903,7 +939,7 @@
 			position: absolute
 			left: 50%
 			top: 50%
-			background: #fff
+			background: #000
 			transition: all .6s
 			border-radius: 4px
 			height: 22px
@@ -915,40 +951,29 @@
 			&:last-child
 				transform: translate(-50%, -50%) rotate(-45deg)
 
-	&__form
-		z-index: 1
-		background-color: #fff
-		box-shadow: 0 0 16px rgba(0, 0, 0, 0.29)
-		width: 100%
-		max-width: 600px
-		height: auto
-		padding: 30px 40px
-		border: 1px solid #8d8d8e
-		margin: auto
-		transform: translate(0, -150px)
-		+transition
-		border-radius: 10px
-
-		+r(992)
-			max-width: 90vw
-			padding: 20px 30px
-
-		+r(576)
-			padding: 25px
-
-	h3
-		text-transform: none
-		font-size: 24px
-		margin-bottom: 20px
-		text-align: center
-		font-weight: 600
-
-
 .form
 	+pseudo
 	position: relative
-	max-width: 500px
-	
+	max-width: 700px
+	z-index: 1
+	background-color: #fff
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.29)
+	width: 100%
+	height: auto
+	padding: 40px 72px 48px 72px
+	border: 1px solid #8d8d8e
+	margin: auto
+	transform: translate(0, -150px)
+	border-radius: 32px
+	+transition
+
+	+r(992)
+		max-width: 90vw
+		padding: 20px 30px
+
+	+r(576)
+		padding: 25px
+
 	&::after
 		width: 100%
 		height: 100%
@@ -963,10 +988,18 @@
 		+transition
 
 	&._sending
-
 		&::after
 			opacity: 1
 			visibility: visible
+
+	&__title
+		text-align: center
+		font-family: var(--second-family)
+		font-weight: 500
+		font-size: 32px
+		line-height: 125%
+		color: var(--main-main-blue)
+		margin-bottom: 40px
 
 	&__item
 		position: relative
@@ -975,14 +1008,6 @@
 	&__label
 		font-weight: 500
 		margin-bottom: 5px
-
-	&__btn
-		order: 1
-
-		.btn
-			max-width: 320px
-			width: 100%
-			margin: 0 auto
 
 	&__error
 		position: absolute
@@ -1011,149 +1036,33 @@
 			border-right: 4px solid transparent
 			border-top: 4px solid transparent
 
-	&._sending
-
-		&::after
-			opacity: 1
-			visibility: visible
-
-	&__item
-		position: relative
-		margin-bottom: 25px
-
-	&__label
-		font-size: 16px
-		font-weight: 500
-		margin-bottom: 5px
-
 	&__input
 		width: 100%
-		height: 40px
-		line-height: 40px
-		padding: 0 15px
-
-		&::placeholder
-			line-height: 40px
-			font-size: 16px
+		border: 1px solid rgba(30, 8, 73, 0.4)
+		border-radius: 8px
+		height: 48px
 
 		&._error
 			border-bottom-color: red
 	
 	&__textarea
+		border: 1px solid rgba(30, 8, 73, 0.4)
+		border-radius: 8px
 		width: 100%
 		resize: none
 		min-height: 120px
-		padding: 15px
+		margin-bottom: 30px
 
 		&._error
 			box-shadow: 0 0 4px 0 rgba(red, 1)
 			border-bottom-color: red
-
-	&__file
-
-		&_item
-			position: relative
-			margin-bottom: 10px
-
-		&_input
-			position: absolute
-			left: 0
-			top: 0
-			width: 100%
-			height: 100%
-			opacity: 0
-			font-size: 0
-
-		&_button
-			display: inline-flex
-			min-height: 40px
-			border-radius: 30px
-			justify-content: center
-			align-items: center
-			background-color: $accent
-			color: #fff
-			padding: 0 15px
-			cursor: pointer
-
-		&_preview
-			display: inline-block
-			max-width: 100px
-
-			img
-				max-width: 100%
-
-	&__checkbox
-		&._error
-			.form__checkbox_label::before
-				box-shadow: 0 0 7px 0 rgba(red, 1)
-
-		&_label
-			position: relative
-			width: 100%
-			line-height: 140%
-			display: inline-flex
-			align-items: center
-			cursor: pointer
-
-			&::before
-				content: ''
-				align-self: flex-start
-				flex: 0 0 20px
-				height: 20px
-				background-color: $accent
-				border-radius: 4px
-				margin-right: 10px
-				+transition
-
-			&::after
-				content: ''
-				width: 12px
-				height: 12px
-				position: absolute
-				top: 4px
-				left: 4px
-				background-color: #fff
-				transform: scale(0)
-				+transition
-
-			a
-				color: $black
-				text-decoration: underline
-
-		&_input
-			display: none
-
-			&:checked + .form__checkbox_label::after
-				transform: scale(1)
-
+	
 	&__btn
 		order: 1
 
 		&_button
 			@extend .btn
-
-	&__error
-		position: absolute
-		bottom: -15px
-		right: 25px
-		left: 25px
-		transition: all .3s
-		animation: error .3s linear 1 forwards
-		color: #fff
-		text-align: center
-		font-weight: 600
-		background-color: red
-		border-radius: 10px
-		z-index: 1
-
-		&::before
-			content: ''
-			position: absolute
-			left: 50%
-			top: -8px
-			margin-left: -2px
-			border-bottom: 4px solid red
-			border-left: 4px solid transparent
-			border-right: 4px solid transparent
-			border-top: 4px solid transparent
+			justify-content: center
+			padding: 10px
+			margin: 0 auto
 

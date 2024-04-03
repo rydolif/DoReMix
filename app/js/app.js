@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-	//----------------------Swiper-----------------------
+	//----------------------Slider-----------------------
 		var externalSwiper = new Swiper('.wrap', {
 				slidesPerView: "auto",
 				spaceBetween: 0,
@@ -43,6 +43,67 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		});
 	
+	//----------------------Slider nav-----------------------
+		const slideLinks = document.querySelectorAll('.header__link');
+
+		externalSwiper.on('slideChange', function () {
+			const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
+			const dataAttribute = activeSlide.getAttribute('data-slide');
+
+			slideLinks.forEach(function(link) {
+				const slideIndex = parseInt(link.getAttribute('data-slide'));
+				if(dataAttribute == slideIndex) {
+					slideLinks.forEach(function(item) {
+						item.classList.remove('header__link--active')
+					});
+					link.classList.add('header__link--active')
+				}
+			});
+
+		});
+
+		nestedSwiper.on('slideChange', function () {
+			const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
+			const dataAttribute = activeSlide.getAttribute('data-slide');
+			// console.log("Поточний індекс вкладеного слайдера:", nestedSwiper.activeIndex);
+
+			slideLinks.forEach(function(link) {
+				const slideIndex = parseInt(link.getAttribute('data-slide'));
+				if(dataAttribute == slideIndex) {
+					slideLinks.forEach(function(item) {
+						item.classList.remove('header__link--active')
+					});
+					link.classList.add('header__link--active')
+				}
+			});
+		});
+
+		slideLinks.forEach(function(link) {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				const slideIndex = parseInt(this.getAttribute('data-slide'));
+				const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+				
+
+ 				if (slideIndex === 5) {
+					console.log(slideIndex)
+					externalSwiper.slideTo(5);
+				} else if(slideIndexNested) {
+					nestedSwiper.slideTo(slideIndexNested);
+				}
+				
+				externalSwiper.slideTo(slideIndex);
+
+				
+				slideLinks.forEach(function(item) {
+					item.classList.remove('header__link--active')
+				});
+				this.classList.add('header__link--active')
+
+			});
+		});
+
+
 
 	//----------------------FIXED-HEADER-----------------------
 		const headerFixed = (headerFixed, headerActive) => {

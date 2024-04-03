@@ -1,0 +1,149 @@
+
+//----------------------fonts---------------------
+$fonts: 'SF Pro Text', sans-serif
+$second-family: 'Outfit', sans-serif
+$third-family: 'Spline Sans', sans-serif
+//---------------------end-fonts---------------------
+
+//----------------------color---------------------
+$accent: #FFA703
+$black: #161B21
+$dark: #1e53a6
+$bg: #E5E5E5
+
+
+//---------------------end-color---------------------
+:root
+	--main-dark-blue---text: #100426
+	--main-main-blue: #1e0849
+	--main-white: #fff
+	--main-text-70-opacity: rgba(16, 4, 38, 0.7)
+	--secondary-slider---blue---200: #dbd4ff
+	--secondary-slider---blue-400: #a285ff
+	--secondary-light-grey: #bcb5c8
+	--background-colours-bg---purple: #49084a
+	--background-colours-bg---violet: #34084a
+	--background-colours-bg---blue: #09084a
+	--background-colours-bg---red: #4a0824
+	--background-colours-gradient-red: #9a1a51
+	--background-colours-gradient-violet: #631f89
+	--glass-card-glass-fill: rgba(255, 255, 255, 0.5)
+
+body
+	overflow: hidden
+	position: relative
+	min-width: 320px
+	font-family: $second-family
+	font-size: 16px
+	color: $black
+	line-height: 1.4
+	font-weight: 400
+	min-height: 100vh
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+
+	+r(1200)
+		font-size: 14px
+
+::selection
+	background-color: $accent
+	color: #fff
+
+::placeholder
+	color: #666
+	
+h1, h2, h3, h4, h5, h6
+	font-weight: 700
+	line-height: 1.2
+	margin: 0
+	padding: 0
+
+ul
+	margin: 0
+	padding: 0
+	list-style-type: none
+
+b, strong
+	font-weight: 700
+
+p
+	margin: 0
+	padding: 0
+
+a,
+button
+	+transition
+
+	&:focus,
+	&:hover
+		outline: none
+		text-decoration: none
+		border: none
+		outline: none
+
+
+input, textarea, select
+	+transition
+	outline: none
+	box-shadow: none
+	border: 1px solid transparent
+	border-bottom: 1px solid #5B5F63
+	background-color: transparent
+	width: 100%
+	height: 50px
+	line-height: 50px
+	font-size: 14px
+	color: #ffffff
+	// -webkit-appearance: none
+	
+	&:focus:required:invalid
+		border-bottom-color: red
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+	&:required:valid
+		border-bottom-color: green
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+	&::placeholder
+		font-size: 14px
+		line-height: 50px
+		color: #5B5F63
+
+	&:focus, &:hover
+		border-bottom: 1px solid $black
+
+
+label.error
+	position: absolute
+	bottom: -25px
+	right: 25px
+	left: 25px
+	transition: all .3s
+	animation: error .3s linear 1 forwards
+	color: #fff
+	text-align: center
+	font-weight: 600
+	background-color: red
+	border-radius: 10px
+	z-index: 1
+
+	&::before
+		content: ''
+		position: absolute
+		left: 50%
+		top: -8px
+		margin-left: -2px
+		border-bottom: 4px solid red
+		border-left: 4px solid transparent
+		border-right: 4px solid transparent
+		border-top: 4px solid transparent
+
+canvas
+	+transition
+
+

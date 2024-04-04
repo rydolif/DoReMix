@@ -339,6 +339,12 @@
 		+r(992)
 			display: none
 
+		img
+			animation-name: slideRightUp
+			animation-duration: 2s
+			animation-iteration-count: infinite
+			animation-timing-function: ease-in-out
+
 	&__swipe
 		@extend .main__scroll
 		display: none
@@ -747,7 +753,7 @@
 			display: flex
 			justify-content: space-between
 			flex-wrap: wrap
-			width: 420px
+			width: 600px
 			backdrop-filter: blur(20px)
 			box-shadow: 0 6px 14px 0 rgba(73, 23, 155, 0.03), 0 25px 25px 0 rgba(73, 23, 155, 0.03), 0 55px 33px 0 rgba(73, 23, 155, 0.02), 0 98px 39px 0 rgba(30, 8, 73, 0), 0 153px 43px 0 rgba(30, 8, 73, 0)
 			background: var(--glass-card-glass-fill)
@@ -759,6 +765,7 @@
 
 			+r(1380)
 				padding: 10px
+				width: 400px
 
 			+r(992)
 				width: 380px
@@ -771,16 +778,13 @@
 
 			&--one
 				right: 40%
-				top: 110px
+				top: 120px
 
 				+r(1380)
 					top: 90px
 
 				+r(992)
 					right: 103%
-
-				+r(576)
-					r
 
 				&_svg
 					position: absolute
@@ -813,7 +817,7 @@
 
 			&--three
 				right: 50%
-				top: 110px
+				top: 120px
 
 				+r(1380)
 					top: 90px
@@ -1045,7 +1049,7 @@
 
 			&.swiper-slide-active
 				.main--products__item--one
-					right: 40%
+					right: 10%
 				
 				.main--products--one__bg2
 					left: 0
@@ -1075,9 +1079,9 @@
 			&.swiper-slide-next
 				.main--products__line
 					&::after
-						width: 43%
+						width: 61%
 					&::before
-						left: 43.3%
+						left: 61.3%
 			
 				.main--products__item--two
 					right: 60%
@@ -1116,7 +1120,7 @@
 					right: 75%
 					opacity: 1
 				.main--products__item--four
-					right: 1%
+					right: -50%
 					opacity: 1
 
 			&.swiper-slide-prev
@@ -1589,6 +1593,16 @@
 	100%
 		transform: translateX(0)
 
+@keyframes slideRightUp
+	0%
+		transform: translateY(0)
+	33%
+		transform: translateY(-10px)
+	66%
+		transform: translateY(10px)
+	100%
+		transform: translateY(0)
+
 .main--products__item--one
 	+r(480)
 		right: 10%
@@ -1617,3 +1631,52 @@
 .main--products--three.swiper-slide-next .main--products__item--two
 	+r(480)
 		right: 100%
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background-color: #ffffff
+	display: flex
+	justify-content: center
+	align-items: center
+	z-index: 9999
+	+transition
+
+.preloader--remove
+	visibility: hidden
+	opacity: 0
+
+
+@keyframes spin
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+
+.preloader::after
+	content: ''
+	width: 40px
+	height: 40px
+	border: 4px solid var(--secondary-slider---blue-400)
+	border-top: 4px solid #f3f3f3
+	border-radius: 50%
+	animation: spin 1s linear infinite
+
+.policy
+	padding: 120px 0
+	height: auto
+	min-height: 100vh
+	background-image: url(../img/gradient.jpg)
+	background-repeat: repeat
+
+	a
+		color: var(--background-colours-gradient-red)
+
+		&::hover
+			color: var(--background-colours-gradient-violet)
+
+	p
+		@extend .main--contacts__text

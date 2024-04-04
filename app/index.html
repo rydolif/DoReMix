@@ -21,6 +21,15 @@
 
 <body>
 
+	<div class="preloader"></div>
+
+	<script>
+		window.addEventListener('load', function() {
+				var preloader = document.querySelector('.preloader');
+				preloader.classList.add('preloader--remove')
+		});
+	</script>
+
 	<header class="header">
 		<div class="container">
 			<div class="header__container">
@@ -180,6 +189,7 @@
 		
 					<div class="main__desc">
 						<div class="main__block">
+							<img src="img/slide__four.svg" class="main__navbar" alt="" >
 							<img src="img/main__nav--respons3.svg" class="main__navbar--respons main__navbar--respons-three" alt="" >
 
 							<p class="main__text main__text--one">
@@ -564,9 +574,9 @@
 								</nav>
 
 								<div class="main--footer__info">
-									<a href="#" target="_blank" class="main--footer__link">Terms of use </a>
-									<a href="https://teenly.tv/pp" target="_blank" class="main--footer__link">Privacy Policy</a>
-									<p><a href="#" target="_blank" class="main--footer__link">Don’t sell or share my personal information </a></p>
+									<a href="/terms.html" target="_blank" class="main--footer__link">Terms of use </a>
+									<a href="/pp.html" target="_blank" class="main--footer__link">Privacy Policy</a>
+									<p><a href="/pp.html" target="_blank" class="main--footer__link">Don’t sell or share my personal information </a></p>
 								</div>
 
 								<p class="main--footer__img">Images by Freepik</p>
@@ -607,7 +617,7 @@
 				</div>
 
 				<div class="form__item">
-					<input type="email" name="mail" placeholder="Email*" class="form__input _email">
+					<input type="email" name="mail" placeholder="Email*" class="form__input _req">
 				</div>
 
 				<div class="form__item">

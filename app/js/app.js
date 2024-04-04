@@ -2,161 +2,161 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-	//----------------------Slider-----------------------
-		var externalSwiper = new Swiper('.wrap', {
-				slidesPerView: "auto",
-				spaceBetween: 0,
-				effect: 'fade',
-				mousewheel: true,
-				speed: 400,
-				pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
-				},
-		});
+		if(document.querySelector('.wrap')) {
+		//----------------------Slider-----------------------
+			var externalSwiper = new Swiper('.wrap', {
+					slidesPerView: "auto",
+					spaceBetween: 0,
+					effect: 'fade',
+					mousewheel: true,
+					speed: 400,
+					pagination: {
+							el: '.swiper-pagination',
+							clickable: true,
+					},
+			});
 
-		var nestedSwiper = new Swiper('.nested-slider', {
-				slidesPerView: "auto",
-				spaceBetween: 0,
-				mousewheel: true,
-				speed: 400,
-				// pagination: {
-				// 		el: '.swiper-pagination',
-				// 		clickable: true,
-				// },
-		});
+			var nestedSwiper = new Swiper('.nested-slider', {
+					slidesPerView: "auto",
+					spaceBetween: 0,
+					mousewheel: true,
+					speed: 400,
+					// pagination: {
+					// 		el: '.swiper-pagination',
+					// 		clickable: true,
+					// },
+			});
 
-		var innerSliderContainer = document.querySelector('.nested-slider');
+			var innerSliderContainer = document.querySelector('.nested-slider');
 
-		innerSliderContainer.addEventListener('mouseenter', function() {
-				externalSwiper.mousewheel.disable();
-		});
-
-		nestedSwiper.on('slideChange', function() {
-			var activeSlideIndex = nestedSwiper.activeIndex;
-			if (activeSlideIndex === 0) {
-				setTimeout(() => {
-					externalSwiper.mousewheel.enable(); 
-				}, 400)
-			} else {
+			innerSliderContainer.addEventListener('mouseenter', function() {
 					externalSwiper.mousewheel.disable();
-			}
-		});
-	
-	//----------------------Slider nav-----------------------
-		const slideLinks = document.querySelectorAll('.header__link');
-		const pagination = document.querySelectorAll('.pagination__bullet');
+			});
 
-		externalSwiper.on('slideChange', function () {
-			const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
-			const dataAttribute = activeSlide.getAttribute('data-slide');
+			nestedSwiper.on('slideChange', function() {
+				var activeSlideIndex = nestedSwiper.activeIndex;
+				if (activeSlideIndex === 0) {
+					setTimeout(() => {
+						externalSwiper.mousewheel.enable(); 
+					}, 400)
+				} else {
+						externalSwiper.mousewheel.disable();
+				}
+			});
+		
+		//----------------------Slider nav-----------------------
+			const slideLinks = document.querySelectorAll('.header__link');
+			const pagination = document.querySelectorAll('.pagination__bullet');
+
+			externalSwiper.on('slideChange', function () {
+				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
+				const dataAttribute = activeSlide.getAttribute('data-slide');
+
+				slideLinks.forEach(function(link) {
+					const slideIndex = parseInt(link.getAttribute('data-slide'));
+					if(dataAttribute == slideIndex) {
+						slideLinks.forEach(function(item) {
+							item.classList.remove('header__link--active')
+						});
+						link.classList.add('header__link--active')
+					}
+				});
+
+				pagination.forEach(function(link) {
+					const slideIndex = parseInt(link.getAttribute('data-slide'));
+					if(dataAttribute == slideIndex) {
+						pagination.forEach(function(item) {
+							item.classList.remove('pagination__bullet--active')
+						});
+						link.classList.add('pagination__bullet--active')
+					}
+				});
+
+			});
+
+			nestedSwiper.on('slideChange', function () {
+				const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
+				if (activeSlide) {
+					const dataAttribute = activeSlide.getAttribute('data-slide');
+			
+					if(nestedSwiper.activeIndex === 0 ) {
+						const time = document.querySelector('.time');
+						const bullettime = document.querySelector('.bullettime');
+						slideLinks.forEach(function(item) {
+							item.classList.remove('header__link--active')
+						});
+						pagination.forEach(function(item) {
+							item.classList.remove('pagination__bullet--active')
+						});
+						time.classList.add('header__link--active')
+						bullettime.classList.add('pagination__bullet--active')
+					} else {
+						slideLinks.forEach(function(link) {
+							const slideIndex = parseInt(link.getAttribute('data-slide'));
+							if(dataAttribute == slideIndex) {
+								slideLinks.forEach(function(item) {
+									item.classList.remove('header__link--active')
+								});
+								link.classList.add('header__link--active')
+							}
+						});
+						pagination.forEach(function(link) {
+							const slideIndex = parseInt(link.getAttribute('data-slide'));
+							if(dataAttribute == slideIndex) {
+								pagination.forEach(function(item) {
+									item.classList.remove('pagination__bullet--active')
+								});
+								link.classList.add('pagination__bullet--active')
+							}
+						});
+					}
+				}
+
+				
+			});
 
 			slideLinks.forEach(function(link) {
-				const slideIndex = parseInt(link.getAttribute('data-slide'));
-				if(dataAttribute == slideIndex) {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const slideIndex = parseInt(this.getAttribute('data-slide'));
+					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+
+					if (slideIndexNested === 5) {
+						externalSwiper.slideTo(5);
+					} 
+					nestedSwiper.slideTo(slideIndexNested);
+					externalSwiper.slideTo(slideIndex);
+
+					
 					slideLinks.forEach(function(item) {
 						item.classList.remove('header__link--active')
 					});
-					link.classList.add('header__link--active')
-				}
+					this.classList.add('header__link--active')
+
+				});
 			});
 
 			pagination.forEach(function(link) {
-				const slideIndex = parseInt(link.getAttribute('data-slide'));
-				if(dataAttribute == slideIndex) {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const slideIndex = parseInt(this.getAttribute('data-slide'));
+					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+
+					if (slideIndexNested === 5) {
+						externalSwiper.slideTo(5);
+					} 
+					nestedSwiper.slideTo(slideIndexNested);
+					externalSwiper.slideTo(slideIndex);
+
+					
 					pagination.forEach(function(item) {
-						item.classList.remove('pagination__bullet--active')
-					});
-					link.classList.add('pagination__bullet--active')
-				}
-			});
-
-		});
-
-		nestedSwiper.on('slideChange', function () {
-			const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
-			if (activeSlide) {
-				const dataAttribute = activeSlide.getAttribute('data-slide');
-		
-				if(nestedSwiper.activeIndex === 0 ) {
-					const time = document.querySelector('.time');
-					const bullettime = document.querySelector('.bullettime');
-					slideLinks.forEach(function(item) {
 						item.classList.remove('header__link--active')
 					});
-					pagination.forEach(function(item) {
-						item.classList.remove('pagination__bullet--active')
-					});
-					time.classList.add('header__link--active')
-					bullettime.classList.add('pagination__bullet--active')
-				} else {
-					slideLinks.forEach(function(link) {
-						const slideIndex = parseInt(link.getAttribute('data-slide'));
-						if(dataAttribute == slideIndex) {
-							slideLinks.forEach(function(item) {
-								item.classList.remove('header__link--active')
-							});
-							link.classList.add('header__link--active')
-						}
-					});
-					pagination.forEach(function(link) {
-						const slideIndex = parseInt(link.getAttribute('data-slide'));
-						if(dataAttribute == slideIndex) {
-							pagination.forEach(function(item) {
-								item.classList.remove('pagination__bullet--active')
-							});
-							link.classList.add('pagination__bullet--active')
-						}
-					});
-				}
-			}
+					this.classList.add('header__link--active')
 
-			
-		});
-
-		slideLinks.forEach(function(link) {
-			link.addEventListener('click', function(e) {
-				e.preventDefault();
-				const slideIndex = parseInt(this.getAttribute('data-slide'));
-				const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-
- 				if (slideIndexNested === 5) {
-					externalSwiper.slideTo(5);
-				} 
-				nestedSwiper.slideTo(slideIndexNested);
-				externalSwiper.slideTo(slideIndex);
-
-				
-				slideLinks.forEach(function(item) {
-					item.classList.remove('header__link--active')
 				});
-				this.classList.add('header__link--active')
-
 			});
-		});
-
-		pagination.forEach(function(link) {
-			link.addEventListener('click', function(e) {
-				e.preventDefault();
-				const slideIndex = parseInt(this.getAttribute('data-slide'));
-				const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-
- 				if (slideIndexNested === 5) {
-					externalSwiper.slideTo(5);
-				} 
-				nestedSwiper.slideTo(slideIndexNested);
-				externalSwiper.slideTo(slideIndex);
-
-				
-				pagination.forEach(function(item) {
-					item.classList.remove('header__link--active')
-				});
-				this.classList.add('header__link--active')
-
-			});
-		});
-
-
+		}
 
 	//----------------------FIXED-HEADER-----------------------
 		const headerFixed = (headerFixed, headerActive) => {

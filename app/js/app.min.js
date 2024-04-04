@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					spaceBetween: 0,
 					effect: 'fade',
 					mousewheel: true,
-					speed: 400,
+					speed: 600,
 					pagination: {
 							el: '.swiper-pagination',
 							clickable: true,
@@ -20,11 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					slidesPerView: "auto",
 					spaceBetween: 0,
 					mousewheel: true,
-					speed: 400,
-					// pagination: {
-					// 		el: '.swiper-pagination',
-					// 		clickable: true,
-					// },
+					speed: 600,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');

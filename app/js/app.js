@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	//----------------------Slider nav-----------------------
 		const slideLinks = document.querySelectorAll('.header__link');
+		const pagination = document.querySelectorAll('.pagination__bullet');
 
 		externalSwiper.on('slideChange', function () {
 			const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
@@ -60,22 +61,57 @@ document.addEventListener("DOMContentLoaded", function() {
 				}
 			});
 
+			pagination.forEach(function(link) {
+				const slideIndex = parseInt(link.getAttribute('data-slide'));
+				if(dataAttribute == slideIndex) {
+					pagination.forEach(function(item) {
+						item.classList.remove('pagination__bullet--active')
+					});
+					link.classList.add('pagination__bullet--active')
+				}
+			});
+
 		});
 
 		nestedSwiper.on('slideChange', function () {
 			const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
-			const dataAttribute = activeSlide.getAttribute('data-slide');
-			// console.log("Поточний індекс вкладеного слайдера:", nestedSwiper.activeIndex);
-
-			slideLinks.forEach(function(link) {
-				const slideIndex = parseInt(link.getAttribute('data-slide'));
-				if(dataAttribute == slideIndex) {
+			if (activeSlide) {
+				const dataAttribute = activeSlide.getAttribute('data-slide');
+		
+				if(nestedSwiper.activeIndex === 0 ) {
+					const time = document.querySelector('.time');
+					const bullettime = document.querySelector('.bullettime');
 					slideLinks.forEach(function(item) {
 						item.classList.remove('header__link--active')
 					});
-					link.classList.add('header__link--active')
+					pagination.forEach(function(item) {
+						item.classList.remove('pagination__bullet--active')
+					});
+					time.classList.add('header__link--active')
+					bullettime.classList.add('pagination__bullet--active')
+				} else {
+					slideLinks.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							slideLinks.forEach(function(item) {
+								item.classList.remove('header__link--active')
+							});
+							link.classList.add('header__link--active')
+						}
+					});
+					pagination.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							pagination.forEach(function(item) {
+								item.classList.remove('pagination__bullet--active')
+							});
+							link.classList.add('pagination__bullet--active')
+						}
+					});
 				}
-			});
+			}
+
+			
 		});
 
 		slideLinks.forEach(function(link) {
@@ -83,19 +119,36 @@ document.addEventListener("DOMContentLoaded", function() {
 				e.preventDefault();
 				const slideIndex = parseInt(this.getAttribute('data-slide'));
 				const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-				
 
- 				if (slideIndex === 5) {
-					console.log(slideIndex)
+ 				if (slideIndexNested === 5) {
 					externalSwiper.slideTo(5);
-				} else if(slideIndexNested) {
-					nestedSwiper.slideTo(slideIndexNested);
-				}
-				
+				} 
+				nestedSwiper.slideTo(slideIndexNested);
 				externalSwiper.slideTo(slideIndex);
 
 				
 				slideLinks.forEach(function(item) {
+					item.classList.remove('header__link--active')
+				});
+				this.classList.add('header__link--active')
+
+			});
+		});
+
+		pagination.forEach(function(link) {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				const slideIndex = parseInt(this.getAttribute('data-slide'));
+				const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+
+ 				if (slideIndexNested === 5) {
+					externalSwiper.slideTo(5);
+				} 
+				nestedSwiper.slideTo(slideIndexNested);
+				externalSwiper.slideTo(slideIndex);
+
+				
+				pagination.forEach(function(item) {
 					item.classList.remove('header__link--active')
 				});
 				this.classList.add('header__link--active')
@@ -215,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
 							item.reset();
 							item.classList.remove('_sending');
 						} else {
-							alert('Błąd podczas wysyłania');
+							alert('Error during sending');
 							item.classList.remove('_sending');
 						}
 			
@@ -257,34 +310,34 @@ document.addEventListener("DOMContentLoaded", function() {
 				function formAddError(input) {
 					let div = document.createElement('div');
 					div.classList.add("form__error");
-					div.innerHTML = "Wprowadź dane w polu";
+					div.innerHTML = "Enter your data in the field";
 
 					input.parentElement.append(div);
 					input.parentElement.classList.add('_error');
 					input.classList.add('_error');
-					setTimeout(formErorrRemove, 2000)
+					setTimeout(formErorrRemove, 4000)
 				}
 			
 				function formAddErrorEmail(input) {
 					let div = document.createElement('div');
 					div.classList.add("form__error");
-					div.innerHTML = "Wprowadź swój email";
+					div.innerHTML = "Enter your email";
 
 					input.parentElement.append(div);
 					input.parentElement.classList.add('_error');
 					input.classList.add('_error');
-					setTimeout(formErorrRemove, 3000)
+					setTimeout(formErorrRemove, 4000)
 				}
 			
 				function formAddErrorCheck(input) {
 					let div = document.createElement('div');
 					div.classList.add("form__error");
-					div.innerHTML = "Zgoda na przetwarzanie danych osobowych";
+					div.innerHTML = "Consent to the processing of personal data";
 
 					input.parentElement.append(div);
 					input.parentElement.classList.add('_error');
 					input.classList.add('_error');
-					setTimeout(formErorrRemove, 3000)
+					setTimeout(formErorrRemove, 4000)
 				}
 			
 				function emailTest(input) {

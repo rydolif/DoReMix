@@ -203,6 +203,7 @@
 
 .main
 	height: 100vh
+	min-height: fit-content
 	width: 100vw
 	background-image: url(../img/main__one.png)
 	background-size: cover
@@ -214,7 +215,7 @@
 		position: relative
 		display: flex
 		flex-direction: column
-		justify-content: space-between
+		justify-content: center
 		height: 100vh
 		padding-top: 170px
 		padding-bottom: 100px
@@ -247,11 +248,13 @@
 		font-size: 20px
 		color: var(--main-dark-blue---text)
 		line-height: 1
+		margin-top: 200px
 
 	&__img
 		position: absolute
 		right: 0
-		top: 220px
+		top: 50%
+		transform: translate(0, -50%)
 		display: flex
 		align-items: center
 		justify-content: center
@@ -299,6 +302,7 @@
 	&__desc
 		position: relative
 		max-width: 550px
+		padding: 40px 0
 
 	&__text
 		height: 150px
@@ -307,7 +311,7 @@
 	&__navbar
 		position: absolute
 		left: 0
-		top: -45px
+		top: 0
 
 	&--one,
 	&--two,
@@ -438,16 +442,15 @@
 			left: 0
 			right: 0
 			width: 100%
+			min-height: 100vh
 			background-color: #fff
 			z-index: -2
 
 		&__img
 			position: absolute
-			left: 0
 			right: 0
-			top: 60%
-			transform: translate(0, -50%)
-			width: 100%
+			top: 150px
+			height: 820px
 
 		&__desc
 			margin-bottom: 50px
@@ -505,6 +508,10 @@
 		background-image: none
 		width: 50%
 
+		&__wrap
+			position: absolute
+			height: 100vh
+
 		&__item
 			position: absolute
 			display: flex
@@ -525,7 +532,7 @@
 
 			&--one
 				right: 40%
-				top: 14%
+				top: 120px
 
 				&_svg
 					position: absolute
@@ -534,7 +541,7 @@
 
 			&--two
 				right: 80%
-				top: 55%
+				top: 510px
 
 				&_svg
 					position: absolute
@@ -543,7 +550,7 @@
 				
 			&--three
 				right: 50%
-				top: 14%
+				top: 120px
 
 				&_svg
 					position: absolute
@@ -552,7 +559,7 @@
 
 			&--four
 				right: -40%
-				top: 55%
+				top: 510px
 
 				&_svg
 					position: absolute
@@ -619,13 +626,18 @@
 
 		&__line
 			position: absolute
-			top: 52%
-			left: -130%
+			top: 485px
+			left: -135%
 			height: 10px
 			width: 270%
 			background: var(--secondary-light-grey)
 			z-index: 100
 			transition: all .4s
+
+			+r(2000)
+				left: -115%
+
+				&::before
 
 			&::after
 				content: ''
@@ -635,14 +647,17 @@
 				bottom: 0
 				display: block
 				height: 100%
-				width: 10%
+				width: 18%
 				background: linear-gradient(90deg, #9a1a51 0%, #631f89 83.7%)
 				+transition
+
+				+r(2000)
+					width: 10%
 
 			&::before
 				content: ''
 				position: absolute
-				left: 10.1%
+				left: 18%
 				top: 50%
 				transform: translate(-50%, -50%)
 				z-index: 1
@@ -653,21 +668,36 @@
 				background: linear-gradient(90deg, #9a1a51 0%, #631f89 83.7%)
 				+transition
 		
+				+r(2000)
+					left: 10%
+
 		&--one
+			.main__container
+				justify-content: space-between
+
 			&__bg
 				position: absolute
 				left: 0
 				top: 0
 				z-index: -1
 				width: 200%
+				min-height: 100vh
 				transform: scaleX(-1)
+
+			&__bg2
+				position: absolute
+				left: -100%
+				bottom: 0
+				z-index: 1
+				width: 170%
+				transition: all .4s
 
 			&__img
 				position: absolute
 				left: 0
-				top: 60%
-				transform: translate(0, -50.2%)
-				width: 89%
+				top: 150px
+				height: 820px
+				z-index: 1
 
 		&--two
 			.main--products__item--one
@@ -679,14 +709,20 @@
 				top: 0
 				width: 200%
 
-		&--two.swiper-slide-active
-			.main--products__item--one
-				right: 10%
+			&.swiper-slide-active
+				.main--products__item--one
+					right: 10%
+				
+				.main--products--one__bg2
+					left: 0
 
-		&--two.swiper-slide-prev
-			.main--products__item--one
-				right: -35%
-				opacity: 0.5
+			&.swiper-slide-prev
+				.main--products__item--one
+					right: -35%
+					opacity: 0.5
+
+				.main--products--one__bg2
+					left: 100%
 
 		&--three
 			transform: none !important
@@ -698,59 +734,60 @@
 			&__bg
 				position: absolute
 				left: 100%
+				min-height: 100vh
 				top: 0
 				width: 200%
 
-		&--three.swiper-slide-next
-			.main--products__line
-				&::after
-					width: 56%
-				&::before
-					left: 56.3%
-		
-			.main--products__item--two
-				right: 60%
-				opacity: 1
+			&.swiper-slide-next
+				.main--products__line
+					&::after
+						width: 66%
+					&::before
+						left: 66.3%
 			
-			.main--products__item--three
-				right: 15%
-				opacity: 1
+				.main--products__item--two
+					right: 60%
+					opacity: 1
+				
+				.main--products__item--three
+					right: 15%
+					opacity: 1
 
-			.main--products__item--two_svg,
-			.main--products__item--three_svg
-				path
-					stroke: #9A1A51
+				.main--products__item--two_svg,
+				.main--products__item--three_svg
+					path
+						stroke: #9A1A51
 
-		&--three.swiper-slide-active
-			.main--products__line
-				&::after
-					width: 100%
-				&::before
-					left: 100%
+			&.swiper-slide-active
+				.main--products__line
+					&::after
+						width: 100%
+					&::before
+						left: 100%
 
-			.main--products__item--two_svg,
-			.main--products__item--three_svg,
-			.main--products__item--four_svg
-				path
-					stroke: #9A1A51
-	
-			.main--products__item--three
-				right: -30%
-				opacity: 1
+				.main--products__item--two_svg,
+				.main--products__item--three_svg,
+				.main--products__item--four_svg
+					path
+						stroke: #9A1A51
+		
+				.main--products__item--three
+					right: -30%
+					opacity: 1
 
-			.main--products__item--two
-				right: 15%
-				opacity: 1
-			.main--products__item--four
-				right: -85%
-				opacity: 1
+				.main--products__item--two
+					right: 15%
+					opacity: 1
+				.main--products__item--four
+					right: -85%
+					opacity: 1
 
-		&--three.swiper-slide-prev
-			.main--products__line
-				&::after
-					width: 100%
-				&::before
-					left: 100%
+			&.swiper-slide-prev
+				.main--products__line
+					&::after
+						width: 100%
+					&::before
+						left: 100%
 
 	&--contacts
 		background-image: url(../img/main--contacts.png)
@@ -762,12 +799,13 @@
 			position: absolute
 			bottom: 0
 			left: 0
-			width: 100%
+			min-width: 100%
+			min-height: 100vh
 			transform: rotateY(-180deg)
 			z-index: -1
 
 		&.swiper-slide-prev
-			margin-left: 60%
+			margin-left: 50%
 
 			.main__img
 				right: 20%
@@ -776,7 +814,7 @@
 				opacity: 0
 
 		.main__img
-			top: 130px
+			top: 60%
 
 		&__desc
 			max-width: 700px
@@ -831,11 +869,25 @@
 			font-size: 18px
 			line-height: 133%
 			color: var(--main-white)
+			margin-bottom: 30px
 
 		&__soc
 			display: flex
 			flex-wrap: wrap
 			gap: 10px
+			margin-bottom: 20px
+
+			path
+				+transition
+
+			a
+				display: block
+				width: 42px
+				height: 42px
+
+				&:hover
+					path
+						fill: #dbd4ff
 
 		&__subtitle
 			font-family: var(--third-family)
@@ -883,6 +935,27 @@
 
 	&--debag
 		width: 40%
+
+.pagination
+	position: fixed
+	z-index: 100
+	bottom: 30px
+	left: 50%
+	transform: translate(0, -50%)
+	display: flex
+	justify-content: center
+	gap: 13px
+
+	&__bullet
+		border-radius: 12px
+		width: 12px
+		height: 12px
+		background: var(--secondary-slider---blue---200)
+		+transition
+
+		&--active
+			background: var(--secondary-slider---blue-400)
+			width: 56px
 
 .modal
 	display: flex
@@ -1003,7 +1076,7 @@
 
 	&__item
 		position: relative
-		margin-bottom: 15px
+		margin-bottom: 20px
 
 	&__label
 		font-weight: 500
@@ -1012,29 +1085,14 @@
 	&__error
 		position: absolute
 		bottom: -15px
-		right: 25px
-		left: 25px
+		left: 10px
 		transition: all .3s
 		animation: error .3s linear 1 forwards
-		color: #fff
+		color: red
 		text-align: center
-		font-weight: 600
-		background-color: red
-		border-radius: 10px
 		font-size: 12px
 		line-height: 130%
 		z-index: 1
-
-		&::before
-			content: ''
-			position: absolute
-			left: 50%
-			top: -8px
-			margin-left: -2px
-			border-bottom: 4px solid red
-			border-left: 4px solid transparent
-			border-right: 4px solid transparent
-			border-top: 4px solid transparent
 
 	&__input
 		width: 100%

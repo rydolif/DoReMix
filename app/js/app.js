@@ -2,6 +2,25 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
+	const cookies = document.querySelector('#modal--cookies');
+	const btnTransparent = document.querySelector('.btn--all');
+	const btnAll = document.querySelector('.btn--transparent');
+	
+	btnTransparent.addEventListener('click', function(e) {
+			console.log(cookies)
+			console.log(btnTransparent)
+			e.preventDefault();
+			cookies.classList.remove('modal--cookies-active');
+	});
+	
+	btnAll.addEventListener('click', function(e) {
+		console.log(btnAll)
+
+			e.preventDefault();
+			cookies.classList.remove('modal--cookies-active');
+	});
+	
+
 		if(document.querySelector('.wrap')) {
 		//----------------------Slider-----------------------
 			var externalSwiper = new Swiper('.wrap', {

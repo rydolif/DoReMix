@@ -1463,6 +1463,79 @@
 			&:last-child
 				transform: translate(-50%, -50%) rotate(-45deg)
 
+	&--cookies
+		position: fixed
+		bottom: 30px
+		border-radius: 32px
+		padding: 24px
+		width: 436px
+		height: 292px
+		min-width: auto
+		min-height: auto
+		z-index: 100
+		backdrop-filter: blur(20px)
+		box-shadow: 0 6px 14px 0 rgba(73, 23, 155, 0.03), 0 25px 25px 0 rgba(73, 23, 155, 0.03), 0 55px 33px 0 rgba(73, 23, 155, 0.02), 0 98px 39px 0 rgba(30, 8, 73, 0), 0 153px 43px 0 rgba(30, 8, 73, 0)
+		background: var(--glass-card-glass-fill)
+		visibility: hidden
+		opacity: 0
+		right: -300px
+		+transition
+
+		+r(767)
+			width: 360px
+
+		h3
+			font-family: var(--second-family)
+			font-weight: 500
+			font-size: 32px
+			line-height: 125%
+			color: var(--main-main-blue)
+			margin-bottom: 15px
+
+			+r(767)
+				font-size: 22px
+
+		p
+			font-family: var(--third-family)
+			font-weight: 400
+			font-size: 18px
+			line-height: 133%
+			color: var(--main-text-70-opacity)
+			margin-bottom: 40px
+			+r(767)
+				margin-bottom: 25px
+
+		&__btn
+			display: flex
+			gap: 15px
+
+			.btn
+				width: 55%
+				padding: 15px
+				justify-content: center
+				font-family: var(--second-family)
+				font-weight: 400
+				font-size: 20px
+				line-height: 100%
+				text-transform: capitalize
+				color: var(--main-white)
+
+			.btn--transparent
+				border: 1px solid var(--background-colours-gradient-violet)
+				color: var(--main-dark-blue---text)
+				width: 40%
+				&::before
+					display: none
+
+				&:hover
+					background-color: var(--background-colours-gradient-violet)
+					color: #fff
+
+		&-active
+			opacity: 1
+			right: 30px
+			visibility: visible
+
 .form
 	+pseudo
 	position: relative

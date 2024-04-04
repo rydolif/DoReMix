@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		
 		//----------------------Slider nav-----------------------
-			const slideLinks = document.querySelectorAll('.header__link');
+			const slideLinks = document.querySelectorAll('.link');
 			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {

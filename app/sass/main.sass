@@ -83,20 +83,20 @@
 
 	&:hover
 		span
-			background-color: $accent
+			background-color: #000
 
 			&::before,
 			&::after
-				background-color: $accent
+				background-color: #000
 
 	&__item
 		position: absolute
 		right: 0
 		top: 50%
 		transform: translate(0, -50%)
-		width: 12px
+		width: 30px
 		height: 2px
-		background-color: #fff
+		background-color: #000
 		border-radius: 4px
 		+transition
 		bottom: 0
@@ -107,17 +107,17 @@
 			display: block
 			position: absolute
 			right: 0
-			background-color: #fff
+			background-color: #000
 			height: 2px
 			+transition
 
 		&::before
 			top: 7px
-			width: 18px
+			width: 30px
 
 		&::after
 			top: -7px
-			width: 25px
+			width: 30px
 
 	&--active
 		z-index: 100
@@ -128,7 +128,7 @@
 
 				&::before,
 				&::after
-					background-color: $accent
+					background-color: #000
 
 		.hamburger__item
 			background-color: transparent
@@ -154,9 +154,24 @@
 	backdrop-filter: blur(30px)
 	border: 1px solid #fff
 	z-index: 100
+	+transition
+
+	+r(992)
+		border-radius: 0 0 16px 16px
+
+	&--menu
+		border-radius: 0
+		background-color: #fff
 
 	&__container
 		position: relative
+
+		+r(767)
+			display: flex
+			align-items: center
+			justify-content: space-between
+			padding-top: 13px
+			padding-bottom: 13px
 
 	&__logo
 		position: absolute
@@ -164,12 +179,40 @@
 		top: 50%
 		transform: translate(0, -45%)
 
+		+r(767)
+			position: relative
+			top: 0
+			transform: translate(0, 15%)
+
 	&__list
 		display: flex
 		justify-content: center
 
+		+r(767)
+			flex-direction: column
+
 	&__nav
 		padding-left: 100px
+		+transition
+
+		+r(767)
+			position: fixed
+			top: 45px
+			left: 0
+			right: 0
+			width: 100%
+			backdrop-filter: blur(130px)
+			background: rgba(255, 255, 255, 0.9)
+			padding: 25px 60px 50px
+			text-align: center
+			visibility: hidden
+			opacity: 0
+			z-index: -1
+
+		&--active
+			top: 65px
+			visibility: visible
+			opacity: 1
 
 	&__link
 		position: relative
@@ -182,6 +225,10 @@
 		+r(1200)
 			padding: 15px 20px
 			font-size: 18px
+
+		+r(767)
+			max-width: 255px
+			margin: 0 auto
 
 		&:hover
 			color: #100426
@@ -338,12 +385,21 @@
 			margin: 0 auto
 			transform: translate(0, 0)
 
+		+r(576)
+			width: 300px
+
+		+r(480)
+			width: 250px
+
 		img
 			max-width: 120%
 
 		&_style
 			position: absolute
 			transition: all 0s ease-in-out 0.4s
+
+			+r(480)
+				transform: scale(.7) !important
 
 		&_play
 			top: -30px
@@ -401,6 +457,7 @@
 
 		+r(992)
 			padding-left: 0
+			font-size: 18px
 
 	&__navbar
 		position: absolute
@@ -589,6 +646,9 @@
 				top: 145px
 				height: 452px
 
+			+r(767)
+				width: auto
+
 		&__desc
 			margin-bottom: 50px
 			text-align: center
@@ -610,6 +670,9 @@
 				flex-wrap: wrap
 				justify-content: space-around
 
+			+r(767)
+				gap: 15px
+
 		&__item
 			display: flex
 			align-items: center
@@ -630,9 +693,20 @@
 				width: 300px
 				height: 160px
 
+			+r(767)
+				width: 45%
+				height: 110px
+				margin-bottom: 0
+
 			&:hover
 				transform: rotate(-30deg)
 				border: 1px	solid #fff
+
+			img
+				max-width: 100%
+
+				+r(767)
+					max-width: 70%
 
 			&_one
 				grid-area: one
@@ -688,6 +762,7 @@
 
 			+r(992)
 				width: 380px
+
 			svg
 				height: 100%
 
@@ -703,6 +778,9 @@
 
 				+r(992)
 					right: 103%
+
+				+r(576)
+					r
 
 				&_svg
 					position: absolute
@@ -794,6 +872,9 @@
 				svg
 					width: 70%
 
+			+r(480)
+				width: 50px
+
 		&__title
 			font-family: var(--second-family)
 			font-weight: 500
@@ -877,6 +958,9 @@
 			+r(992)
 				left: -150%
 				width: 230%
+
+			+r(767)
+				left: -135%
 
 			&::after
 				content: ''
@@ -1060,6 +1144,9 @@
 		&.swiper-slide-prev
 			margin-left: 50%
 
+			+r(767)
+				margin-left: 0
+
 			.main__img
 				right: 20%
 				transition: all 1s !important
@@ -1101,6 +1188,7 @@
 			margin-bottom: 20px
 
 			svg
+				flex-shrink: 0
 				+r(1200)
 					width: 45px
 					height: 45px
@@ -1152,6 +1240,11 @@
 		+r(992)
 			padding: 105px 55px 15px 0
 
+		+r(576)
+			width: 100%
+			text-align: center
+			padding: 100px 20px 
+
 		.main__container
 			justify-content: space-between
 			padding: 0 15px
@@ -1188,6 +1281,9 @@
 
 			+r(1380)
 				margin-bottom: 15px
+
+			+r(576)
+				justify-content: center
 
 			path
 				+transition
@@ -1251,6 +1347,9 @@
 			gap: 15px 30px
 			margin-bottom: 32px
 
+			+r(576)
+				justify-content: center
+
 			p
 				width: 100%
 
@@ -1264,6 +1363,9 @@
 
 	&--debag
 		width: 40%
+
+		+r(767)
+			width: 0
 
 .pagination
 	position: fixed
@@ -1456,3 +1558,62 @@
 			padding: 10px
 			margin: 0 auto
 
+.main--products__item--one
+	+r(767)
+		right: 60%
+
+.main--products--two.swiper-slide-active .main--products__item--one
+	+r(767)
+		right: 20%
+
+.main--products--two.swiper-slide-prev .main--products__item--one
+	+r(767)
+		right: 5%
+
+.main--products--three.swiper-slide-active .main--products__item--two
+	+r(767)
+		right: 102%
+
+
+.main__swipe_anime
+	animation-name: slideRightLeft
+	animation-duration: 2s
+	animation-iteration-count: infinite
+	animation-timing-function: ease-in-out
+
+@keyframes slideRightLeft
+	0%
+		transform: translateX(0)
+	50%
+		transform: translateX(45px)
+	100%
+		transform: translateX(0)
+
+.main--products__item--one
+	+r(480)
+		right: 10%
+		z-index: 1
+
+.main--products__item--two
+	+r(480)
+		right: 100%
+
+.main--products--two.swiper-slide-active .main--products__item--one
+	+r(480)
+		right: 0
+
+.main--products--three.swiper-slide-active .main--products__item--three
+	+r(480)
+		right: 0
+
+.main--products--three.swiper-slide-next .main--products__item--three
+	+r(480)
+		right: -10%
+
+.main--products__line
+	+r(480)
+		left: -114%
+
+.main--products--three.swiper-slide-next .main--products__item--two
+	+r(480)
+		right: 100%

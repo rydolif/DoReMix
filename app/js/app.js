@@ -23,22 +23,24 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(document.querySelector('.wrap')) {
 		
 			var externalSwiper = new Swiper('.wrap', {
-					slidesPerView: "auto",
-					spaceBetween: 0,
-					effect: 'fade',
-					mousewheel: true,
-					speed: 600,
-					pagination: {
-							el: '.swiper-pagination',
-							clickable: true,
-					},
+				lazy: true,
+				slidesPerView: "auto",
+				spaceBetween: 0,
+				effect: 'fade',
+				mousewheel: true,
+				speed: 600,
+				pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+				},
 			});
 
 			var nestedSwiper = new Swiper('.nested-slider', {
-					slidesPerView: "auto",
-					spaceBetween: 0,
-					mousewheel: true,
-					speed: 600,
+				lazy: true,
+				slidesPerView: "auto",
+				spaceBetween: 0,
+				mousewheel: true,
+				speed: 600,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');

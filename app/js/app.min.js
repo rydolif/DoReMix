@@ -2,27 +2,26 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-	const cookies = document.querySelector('#modal--cookies');
-	const btnTransparent = document.querySelector('.btn--all');
-	const btnAll = document.querySelector('.btn--transparent');
-	
-	btnTransparent.addEventListener('click', function(e) {
-			console.log(cookies)
-			console.log(btnTransparent)
+	//----------------------Cookies Modal-----------------------
+		const cookiesModal = document.querySelector('#modal--cookies');
+		const btnRejectAll = document.querySelector('.btn--all');
+		const btnAll = document.querySelector('.btn--transparent');
+		
+		btnRejectAll.addEventListener('click', function(e) {
+				e.preventDefault();
+				document.cookie = "cookie1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				document.cookie = "cookie2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";		
+				cookiesModal.classList.remove('modal--cookies-active');
+		});
+		
+		btnAll.addEventListener('click', function(e) {
 			e.preventDefault();
-			cookies.classList.remove('modal--cookies-active');
-	});
-	
-	btnAll.addEventListener('click', function(e) {
-		console.log(btnAll)
-
-			e.preventDefault();
-			cookies.classList.remove('modal--cookies-active');
-	});
-	
-
+			cookiesModal.classList.remove('modal--cookies-active');
+		});
+		
+	//----------------------Slider-----------------------
 		if(document.querySelector('.wrap')) {
-		//----------------------Slider-----------------------
+		
 			var externalSwiper = new Swiper('.wrap', {
 					slidesPerView: "auto",
 					spaceBetween: 0,
@@ -60,7 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		
 		//----------------------Slider nav-----------------------
-			const slideLinks = document.querySelectorAll('.link');
+			const slideLinks = document.querySelectorAll('.header__link');
+			const footerLink = document.querySelectorAll('.main--footer__link');
 			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
@@ -150,6 +150,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 				});
 			});
+
+			footerLink.forEach(function(link) {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const slideIndex = parseInt(this.getAttribute('data-slide'));
+					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+
+					if (slideIndexNested === 5) {
+						externalSwiper.slideTo(5);
+					} 
+					nestedSwiper.slideTo(slideIndexNested);
+					externalSwiper.slideTo(slideIndex);
+
+					footerLink.forEach(function(item) {
+						item.classList.remove('header__link--active')
+					});
+					this.classList.add('header__link--active')
+
+				});
+			});
+
 
 			pagination.forEach(function(link) {
 				link.addEventListener('click', function(e) {

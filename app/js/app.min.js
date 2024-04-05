@@ -27,11 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				slidesPerView: "auto",
 				spaceBetween: 0,
 				effect: 'fade',
-				mousewheel: true,
+				mousewheel: {
+					eventsTarged: '.wrap',
+					thresholdTime: 1000 // Час для прокрутки колесом миші
+				},
 				speed: 600,
 				pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
+					el: '.swiper-pagination',
+					clickable: true,
 				},
 			});
 
@@ -39,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
 				lazy: true,
 				slidesPerView: "auto",
 				spaceBetween: 0,
-				mousewheel: true,
+				mousewheel: {
+					eventsTarged: '.nested-slider',
+					thresholdTime: 1000 // Час для прокрутки колесом миші
+				},
 				speed: 600,
 			});
 

@@ -28,25 +28,33 @@ document.addEventListener("DOMContentLoaded", function() {
 				spaceBetween: 0,
 				effect: 'fade',
 				mousewheel: {
-					eventsTarged: '.wrap',
-					thresholdTime: 1000 // Час для прокрутки колесом миші
+						eventsTarged: '.wrap',
+						thresholdTime: 1000 // Час для прокрутки колесом миші
 				},
 				speed: 600,
 				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
+						el: '.swiper-pagination',
+						clickable: true,
 				},
+				on: {
+						slideChangeTransitionStart: function () {
+								nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
+						},
+						slideChangeTransitionEnd: function () {
+								nestedSwiper.mousewheel.enable(); // Увімкнення прокрутки миші для внутрішнього слайдера
+						}
+				}
 			});
-
+			
 			var nestedSwiper = new Swiper('.nested-slider', {
-				lazy: true,
-				slidesPerView: "auto",
-				spaceBetween: 0,
-				mousewheel: {
-					eventsTarged: '.nested-slider',
-					thresholdTime: 1000 // Час для прокрутки колесом миші
-				},
-				speed: 600,
+					lazy: true,
+					slidesPerView: "auto",
+					spaceBetween: 0,
+					mousewheel: {
+							eventsTarged: '.nested-slider',
+							thresholdTime: 1000 // Час для прокрутки колесом миші
+					},
+					speed: 600,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');

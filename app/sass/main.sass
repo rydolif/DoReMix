@@ -284,7 +284,7 @@
 			justify-content: flex-start
 
 	&__content
-		max-width: 780px
+		max-width: 785px
 
 		+r(1500)
 			max-width: 650px
@@ -518,6 +518,12 @@
 		&.swiper-slide-prev
 			.main__img_style
 				transition: all 1s ease-in-out 0.2s
+	
+	&--two,
+	&--three,
+	&--four
+		.main__desc
+			max-width: 499px
 
 	&--one
 		&.swiper-slide-prev
@@ -630,7 +636,7 @@
 				&_rock2
 					top: -40px
 					left: 0%
-					transform: scale(3)
+					transform: scale(1.4)
 
 				&_play2
 					top: 50%
@@ -777,10 +783,16 @@
 
 		.main__title
 			margin-left: auto
-			margin-right: 300px
+			margin-right: 430px
+
+			+r(1430)
+				margin-right: 330px
+
+			+r(1380)
+				margin-right: 390px
 
 			+r(1200)
-				margin-right: 190px
+				margin-right: 285px
 			
 			+r(992)
 				margin-right: auto
@@ -973,6 +985,12 @@
 				+r(1380)
 					height: 35px
 					margin-bottom: 5px
+
+				&:hover
+					animation: animateHoverImg 0.6s forwards
+
+				&:not(:hover)
+					animation: animateOutImg 0.6s forwards
 
 				&:last-child
 					margin-bottom: 0
@@ -1670,6 +1688,7 @@
 		resize: none
 		min-height: 120px
 		margin-bottom: 30px
+		line-height: 1.4
 
 		&._error
 			box-shadow: 0 0 4px 0 rgba(red, 1)
@@ -1771,7 +1790,6 @@
 		@extend .main--contacts__text
 
 
-
 @keyframes animateOut
 	0%
 		transform: rotate(-20deg)
@@ -1785,3 +1803,19 @@
 		transform: rotate(0)
 	100%
 		transform: rotate(-20deg)
+
+@keyframes animateOutImg
+	0%
+		transform: rotate(-5deg)
+	50%
+		transform: rotate(2deg)
+	100%
+		transform: rotate(0deg)
+
+@keyframes animateHoverImg
+	0%
+		transform: rotate(0)
+	100%
+		transform: rotate(-5deg)
+
+

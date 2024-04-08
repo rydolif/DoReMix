@@ -3,21 +3,35 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 	//----------------------Cookies Modal-----------------------
+	window.addEventListener('DOMContentLoaded', () => {
 		const cookiesModal = document.querySelector('#modal--cookies');
 		const btnRejectAll = document.querySelector('.btn--all');
 		const btnAll = document.querySelector('.btn--transparent');
 		
-		btnRejectAll.addEventListener('click', function(e) {
+		// Перевірка, чи вже воно не показувалося
+		if (!localStorage.getItem('cookiesModalShown')) {
+			// Показуємо модальне вікно
+			cookiesModal.classList.add('modal--cookies-active');
+	
+			btnRejectAll.addEventListener('click', function(e) {
 				e.preventDefault();
 				document.cookie = "cookie1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-				document.cookie = "cookie2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";		
+				document.cookie = "cookie2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 				cookiesModal.classList.remove('modal--cookies-active');
-		});
-		
-		btnAll.addEventListener('click', function(e) {
-			e.preventDefault();
-			cookiesModal.classList.remove('modal--cookies-active');
-		});
+				// Зберігаємо інформацію про те, що модальне вікно вже було показано
+				localStorage.setItem('cookiesModalShown', true);
+			});
+			
+			btnAll.addEventListener('click', function(e) {
+				e.preventDefault();
+				cookiesModal.classList.remove('modal--cookies-active');
+				// Зберігаємо інформацію про те, що модальне вікно вже було показано
+				localStorage.setItem('cookiesModalShown', true);
+			});
+		}
+	});
+	
+
 		
 	//----------------------Slider-----------------------
 		if(document.querySelector('.wrap')) {

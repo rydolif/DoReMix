@@ -56,14 +56,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 			
 			var nestedSwiper = new Swiper('.nested-slider', {
-					lazy: true,
-					slidesPerView: "auto",
-					spaceBetween: 0,
-					mousewheel: {
-							eventsTarged: '.nested-slider',
-							thresholdTime: 1000 // Час для прокрутки колесом миші
-					},
-					speed: 600,
+				lazy: true,
+				slidesPerView: "auto",
+				spaceBetween: 0,
+				mousewheel: {
+						eventsTarged: '.nested-slider',
+						thresholdTime: 1000 // Час для прокрутки колесом миші
+				},
+				speed: 600,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');
@@ -89,29 +89,30 @@ document.addEventListener("DOMContentLoaded", function() {
 			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
-				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
-				const dataAttribute = activeSlide.getAttribute('data-slide');
+				setTimeout(() => {
+					const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
+					const dataAttribute = activeSlide.getAttribute('data-slide');
 
-				slideLinks.forEach(function(link) {
-					const slideIndex = parseInt(link.getAttribute('data-slide'));
-					if(dataAttribute == slideIndex) {
-						slideLinks.forEach(function(item) {
-							item.classList.remove('header__link--active')
-						});
-						link.classList.add('header__link--active')
-					}
-				});
+					slideLinks.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							slideLinks.forEach(function(item) {
+								item.classList.remove('header__link--active')
+							});
+							link.classList.add('header__link--active')
+						}
+					});
 
-				pagination.forEach(function(link) {
-					const slideIndex = parseInt(link.getAttribute('data-slide'));
-					if(dataAttribute == slideIndex) {
-						pagination.forEach(function(item) {
-							item.classList.remove('pagination__bullet--active')
-						});
-						link.classList.add('pagination__bullet--active')
-					}
-				});
-
+					pagination.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							pagination.forEach(function(item) {
+								item.classList.remove('pagination__bullet--active')
+							});
+							link.classList.add('pagination__bullet--active')
+						}
+					});
+				}, 500)
 			});
 
 			nestedSwiper.on('slideChange', function () {
@@ -151,8 +152,6 @@ document.addEventListener("DOMContentLoaded", function() {
 						});
 					}
 				}
-
-				
 			});
 
 			slideLinks.forEach(function(link) {
@@ -167,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function() {
 					nestedSwiper.slideTo(slideIndexNested);
 					externalSwiper.slideTo(slideIndex);
 
-					
 					slideLinks.forEach(function(item) {
 						item.classList.remove('header__link--active')
 					});
@@ -195,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 				});
 			});
-
 
 			pagination.forEach(function(link) {
 				link.addEventListener('click', function(e) {

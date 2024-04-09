@@ -74,12 +74,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			nestedSwiper.on('slideChange', function() {
 				var activeSlideIndex = nestedSwiper.activeIndex;
+				var activeIndex = externalSwiper.activeIndex;
+				console.log(activeIndex)
+
 				if (activeSlideIndex === 0) {
 					setTimeout(() => {
 						externalSwiper.mousewheel.enable(); 
 					}, 1000)
-				} else {
-						externalSwiper.mousewheel.disable();
+				}  else {
+					externalSwiper.mousewheel.disable();
+				}
+			});
+			
+			externalSwiper.on('slideChange', function() {
+				var activeIndex = externalSwiper.activeIndex;
+				console.log(activeIndex)
+
+			 if (activeIndex === 4) {
+					setTimeout(() => {
+						externalSwiper.mousewheel.enable();
+					}, 100)
 				}
 			});
 		
@@ -89,30 +103,29 @@ document.addEventListener("DOMContentLoaded", function() {
 			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
-				setTimeout(() => {
-					const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
-					const dataAttribute = activeSlide.getAttribute('data-slide');
+				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
+				const dataAttribute = activeSlide.getAttribute('data-slide');
 
-					slideLinks.forEach(function(link) {
-						const slideIndex = parseInt(link.getAttribute('data-slide'));
-						if(dataAttribute == slideIndex) {
-							slideLinks.forEach(function(item) {
-								item.classList.remove('header__link--active')
-							});
-							link.classList.add('header__link--active')
-						}
-					});
+				slideLinks.forEach(function(link) {
+					const slideIndex = parseInt(link.getAttribute('data-slide'));
+					if(dataAttribute == slideIndex) {
+						slideLinks.forEach(function(item) {
+							item.classList.remove('header__link--active')
+						});
+						link.classList.add('header__link--active')
+					}
+				});
 
-					pagination.forEach(function(link) {
-						const slideIndex = parseInt(link.getAttribute('data-slide'));
-						if(dataAttribute == slideIndex) {
-							pagination.forEach(function(item) {
-								item.classList.remove('pagination__bullet--active')
-							});
-							link.classList.add('pagination__bullet--active')
-						}
-					});
-				}, 500)
+				pagination.forEach(function(link) {
+					const slideIndex = parseInt(link.getAttribute('data-slide'));
+					if(dataAttribute == slideIndex) {
+						pagination.forEach(function(item) {
+							item.classList.remove('pagination__bullet--active')
+						});
+						link.classList.add('pagination__bullet--active')
+					}
+				});
+
 			});
 
 			nestedSwiper.on('slideChange', function () {

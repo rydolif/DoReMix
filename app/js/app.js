@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				if (activeSlideIndex === 0) {
 					setTimeout(() => {
 						externalSwiper.mousewheel.enable(); 
-					}, 400)
+					}, 1000)
 				} else {
 						externalSwiper.mousewheel.disable();
 				}

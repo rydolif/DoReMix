@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		const btnRejectAll = document.querySelector('.btn--all');
 		const btnAll = document.querySelector('.btn--transparent');
 		
-		// Перевірка, чи вже воно не показувалося
 		if (!localStorage.getItem('cookiesModalShown')) {
-			// Показуємо модальне вікно
 			cookiesModal.classList.add('modal--cookies-active');
 	
 			btnRejectAll.addEventListener('click', function(e) {
@@ -18,14 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
 				document.cookie = "cookie1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 				document.cookie = "cookie2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 				cookiesModal.classList.remove('modal--cookies-active');
-				// Зберігаємо інформацію про те, що модальне вікно вже було показано
 				localStorage.setItem('cookiesModalShown', true);
 			});
 			
 			btnAll.addEventListener('click', function(e) {
 				e.preventDefault();
 				cookiesModal.classList.remove('modal--cookies-active');
-				// Зберігаємо інформацію про те, що модальне вікно вже було показано
 				localStorage.setItem('cookiesModalShown', true);
 			});
 		}

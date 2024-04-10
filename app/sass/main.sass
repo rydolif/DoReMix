@@ -213,7 +213,7 @@
 			z-index: -1
 
 		&--active
-			top: 65px
+			top: 58px
 			visibility: visible
 			opacity: 1
 
@@ -308,6 +308,9 @@
 
 		+r(992)
 			font-size: 28px
+		
+		+r(480)
+			font-size: 22px
 
 		&--uppercase
 			text-transform: uppercase
@@ -320,6 +323,9 @@
 
 		+r(1380)
 			font-size: 22px
+		
+		+r(480)
+			font-size: 16px
 
 		b
 			font-weight: 400
@@ -351,6 +357,12 @@
 	&__swipe
 		@extend .main__scroll
 		display: none
+
+		&_anime
+			animation-name: slideRightLeft
+			animation-duration: 2s
+			animation-iteration-count: infinite
+			animation-timing-function: ease-in-out
 
 		+r(992)
 			display: flex
@@ -457,6 +469,7 @@
 
 		span
 			position: relative
+			display: inline-block
 
 			&::before
 				content: ''
@@ -473,7 +486,7 @@
 	&__text
 		height: 150px
 		padding-left: 60px
-		font-size: 18іpx
+		font-size: 18px
 
 		+r(1380)
 			height: 120px
@@ -826,6 +839,9 @@
 
 			+r(992)
 				width: 380px
+			
+			+r(480)
+				width: calc(100% - 50px)
 
 			svg
 				height: 100%
@@ -843,6 +859,13 @@
 				+r(992)
 					right: 103%
 
+				+r(767)
+					right: 60%
+
+				+r(480)
+					right: 30%
+					z-index: 1
+
 				&_svg
 					position: absolute
 					right: 100%
@@ -851,6 +874,8 @@
 
 					+r(1380)
 						height: 120px
+					+r(400)
+						display: none
 
 			&--two
 				right: 80%
@@ -862,6 +887,9 @@
 				+r(992)
 					right: 155%
 
+				+r(480)
+					right: 100%
+
 				&_svg
 					position: absolute
 					right: 98%
@@ -871,6 +899,8 @@
 					+r(1380)
 						height: 160px
 						right: 90%
+					+r(400)
+						display: none
 
 			&--three
 				right: 50%
@@ -881,6 +911,9 @@
 
 				+r(1200)
 					right: 35%
+				
+				+r(480)
+					top: 70px
 
 				&_svg
 					position: absolute
@@ -890,6 +923,9 @@
 
 					+r(1380)
 						height: 120px
+
+					+r(480)
+						display: none
 
 			&--four
 				right: -40%
@@ -913,7 +949,10 @@
 					+r(1380)
 						height: 160px
 						right: 93%
-		
+
+					+r(480)
+						display: none
+
 		&__label
 			position: absolute
 			right: 100%
@@ -969,6 +1008,10 @@
 			line-height: 133%
 			color: var(--main-main-blue)
 			width: 43%
+
+			+r(480)
+				font-size: 16px
+				width: 48%
 
 			p
 				margin-bottom: 12px
@@ -1028,6 +1071,12 @@
 
 			+r(767)
 				left: -135%
+
+			+r(480)
+				left: -114%
+
+			+r(400)
+				left: -100%
 
 			&::after
 				content: ''
@@ -1113,7 +1162,11 @@
 			&.swiper-slide-active
 				.main--products__item--one
 					right: 10%
-				
+					+r(767)
+						right: 20%
+					+r(480)
+						right: 0
+
 				.main--products--one__bg2
 					left: 0
 
@@ -1121,6 +1174,12 @@
 				.main--products__item--one
 					right: -10%
 					opacity: 0.5
+
+					+r(767)
+						right: 5%
+
+					+r(480)
+						right: 0
 
 				.main--products--one__bg2
 					left: 100%
@@ -1145,17 +1204,23 @@
 						width: 61%
 					&::before
 						left: 61.3%
-			
+
 				.main--products__item--two
 					right: 60%
 					opacity: 1
 
 					+r(992)
 						right: 102%
-				
+
+					+r(480)
+						right: 100%
+
 				.main--products__item--three
 					right: 0%
 					opacity: 1
+
+					+r(480)
+						right: -10%
 
 				.main--products__item--two_svg,
 				.main--products__item--three_svg
@@ -1175,16 +1240,29 @@
 					path
 						stroke: #9A1A51
 		
+				.main--products__item--two
+					right: 75%
+					opacity: 1
+
+					+r(767)
+						right: 102%
+
+					+r(480)
+						right: 100%
+
 				.main--products__item--three
 					right: 10%
 					opacity: 1
 
-				.main--products__item--two
-					right: 75%
-					opacity: 1
+					+r(480)
+						right: 0
+
 				.main--products__item--four
 					right: -50%
 					opacity: 1
+
+					+r(480)
+						right: 0
 
 			&.swiper-slide-prev
 				.main--products__line
@@ -1236,6 +1314,9 @@
 
 			+r(992)
 				top: 10%
+			
+			+r(480)
+				top: 0
 
 		&__desc
 			max-width: 700px
@@ -1257,6 +1338,10 @@
 			gap: 15px
 			margin-bottom: 20px
 
+			+r(480)
+				margin-bottom: 15px
+				gap: 10px
+
 			svg
 				flex-shrink: 0
 				+r(1200)
@@ -1275,6 +1360,9 @@
 				+r(1200)
 					font-size: 14px
 
+				+r(480)
+					font-size: 12px
+
 			b
 				font-family: var(--second-family)
 				font-weight: 500
@@ -1287,6 +1375,9 @@
 
 				+r(1200)
 					font-size: 20px
+				
+				+r(480)
+					font-size: 16px
 
 		&__text
 			font-family: var(--third-family)
@@ -1298,6 +1389,9 @@
 
 			+r(1200)
 				font-size: 16px
+			
+			+r(480)
+				margin-bottom: 20px
 
 	&--footer
 		background: var(--main-main-blue)
@@ -1545,13 +1639,18 @@
 		z-index: 100
 		// backdrop-filter: blur(20px)
 		box-shadow: 0 6px 14px 0 rgba(73, 23, 155, 0.03), 0 25px 25px 0 rgba(73, 23, 155, 0.03), 0 55px 33px 0 rgba(73, 23, 155, 0.02), 0 98px 39px 0 rgba(30, 8, 73, 0), 0 153px 43px 0 rgba(30, 8, 73, 0)
-		background: rgba(255, 255, 255, .85)
+		background: rgba(255, 255, 255, .95)
 		visibility: hidden
 		opacity: 0
 		transition: all 1s 0s
 
 		+r(767)
 			width: 360px
+
+		+r(480)
+			width: calc(100% - 30px)
+			height: fit-content
+			padding: 15px
 
 		h3
 			font-family: var(--second-family)
@@ -1563,6 +1662,10 @@
 
 			+r(767)
 				font-size: 22px
+			
+			+r(480)
+				font-size: 20px
+				margin-bottom: 5px
 
 		p
 			font-family: var(--third-family)
@@ -1573,10 +1676,18 @@
 			margin-bottom: 40px
 			+r(767)
 				margin-bottom: 25px
+			
+			+r(480)
+				font-size: 14px
+				margin-bottom: 15px
 
 		&__btn
 			display: flex
+			flex-wrap: wrap
 			gap: 15px
+
+			+r(480)
+				gap: 5px
 
 			.btn
 				width: 55%
@@ -1588,6 +1699,11 @@
 				line-height: 100%
 				text-transform: capitalize
 				color: var(--main-white)
+				+r(767)
+					font-size: 18px
+				+r(480)
+					font-size: 14px
+					min-width: fit-content
 
 			.btn--transparent
 				border: 1px solid var(--background-colours-gradient-violet)
@@ -1605,6 +1721,9 @@
 			right: 30px
 			visibility: visible
 			transition: all 2s 1s
+	
+			+r(480)
+				right: 15px
 
 .form
 	+pseudo
@@ -1707,76 +1826,6 @@
 			padding: 10px
 			margin: 0 auto
 
-.main--products__item--one
-	+r(767)
-		right: 60%
-
-.main--products--two.swiper-slide-active .main--products__item--one
-	+r(767)
-		right: 20%
-
-.main--products--two.swiper-slide-prev .main--products__item--one
-	+r(767)
-		right: 5%
-
-.main--products--three.swiper-slide-active .main--products__item--two
-	+r(767)
-		right: 102%
-
-
-.main__swipe_anime
-	animation-name: slideRightLeft
-	animation-duration: 2s
-	animation-iteration-count: infinite
-	animation-timing-function: ease-in-out
-
-@keyframes slideRightLeft
-	0%
-		transform: translateX(0)
-	50%
-		transform: translateX(45px)
-	100%
-		transform: translateX(0)
-
-@keyframes slideRightUp
-	0%
-		transform: translateY(0)
-	33%
-		transform: translateY(-10px)
-	66%
-		transform: translateY(10px)
-	100%
-		transform: translateY(0)
-
-.main--products__item--one
-	+r(480)
-		right: 10%
-		z-index: 1
-
-.main--products__item--two
-	+r(480)
-		right: 100%
-
-.main--products--two.swiper-slide-active .main--products__item--one
-	+r(480)
-		right: 0
-
-.main--products--three.swiper-slide-active .main--products__item--three
-	+r(480)
-		right: 0
-
-.main--products--three.swiper-slide-next .main--products__item--three
-	+r(480)
-		right: -10%
-
-.main--products__line
-	+r(480)
-		left: -114%
-
-.main--products--three.swiper-slide-next .main--products__item--two
-	+r(480)
-		right: 100%
-
 .policy
 	padding: 120px 0
 	height: auto
@@ -1799,6 +1848,25 @@
 .swiper-fade .swiper-slide .swiper-slide-next,
 .swiper-fade .swiper-slide .swiper-slide-prev
 	pointer-events: auto
+
+
+@keyframes slideRightLeft
+	0%
+		transform: translateX(0)
+	50%
+		transform: translateX(45px)
+	100%
+		transform: translateX(0)
+
+@keyframes slideRightUp
+	0%
+		transform: translateY(0)
+	33%
+		transform: translateY(-10px)
+	66%
+		transform: translateY(10px)
+	100%
+		transform: translateY(0)
 
 @keyframes animateOut
 	0%

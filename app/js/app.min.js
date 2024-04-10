@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			const btnRejectAll = document.querySelector('.btn--all');
 			const btnAll = document.querySelector('.btn--transparent');
 			
-			if (!localStorage.getItem('cookiesModalShown')) {
+			// if (!localStorage.getItem('cookiesModalShown')) {
 				cookiesModal.classList.add('modal--cookies-active');
 		
 				btnRejectAll.addEventListener('click', function(e) {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					cookiesModal.classList.remove('modal--cookies-active');
 					localStorage.setItem('cookiesModalShown', true);
 				});
-			}
+			// }
 		});
 		
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						eventsTarged: '.nested-slider',
 						thresholdTime: 1000 // Час для прокрутки колесом миші
 				},
-				speed: 600,
+				speed: 1000,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			 if (activeIndex === 4) {
 					setTimeout(() => {
 						externalSwiper.mousewheel.enable();
-					}, 100)
+					}, 500)
 				}
 			});
 		

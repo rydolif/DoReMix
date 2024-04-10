@@ -547,7 +547,7 @@
 				&_gamepad
 					top: 30%
 					left: 50px
-		
+
 	&--two
 		background-image: url(../img/main__two.png)
 
@@ -773,6 +773,9 @@
 
 				img
 					width: 100%
+
+		.main__container
+			justify-content: flex-start
 
 	&--products
 		background-image: none
@@ -1532,6 +1535,7 @@
 	&--cookies
 		position: fixed
 		bottom: 30px
+		right: -500px
 		border-radius: 32px
 		padding: 24px
 		width: 436px
@@ -1544,8 +1548,7 @@
 		background: rgba(255, 255, 255, .85)
 		visibility: hidden
 		opacity: 0
-		right: -300px
-		+transition
+		transition: all 1s 0s
 
 		+r(767)
 			width: 360px
@@ -1601,6 +1604,7 @@
 			opacity: 1
 			right: 30px
 			visibility: visible
+			transition: all 2s 1s
 
 .form
 	+pseudo

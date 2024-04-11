@@ -277,6 +277,9 @@
 		padding-top: 170px
 		padding-bottom: 100px
 
+		+r(1580)
+			padding-top: 130px
+
 		+r(1200)
 			padding: 100px 15px 50px
 		
@@ -830,7 +833,7 @@
 			background: var(--glass-card-glass-fill)
 			border-radius: 0 32px 32px 32px
 			padding: 20px 24px 24px 24px
-			transition: all .4s
+			transition: all 2s
 			opacity: 0.5
 			z-index: 1
 
@@ -853,6 +856,8 @@
 			&--one
 				right: 40%
 				top: 120px
+				+r(1580)
+					right: 20%
 
 				+r(1380)
 					top: 90px
@@ -882,6 +887,13 @@
 				right: 80%
 				top: 510px
 
+				+r(1580)
+					padding: 15px
+
+					.main--products__text
+						font-size: 16px
+						margin-bottom: 10px
+
 				+r(1380)
 					top: 350px
 
@@ -896,6 +908,7 @@
 					right: 98%
 					top: -6%
 					height: 215px
+					z-index: -1
 
 					+r(1380)
 						height: 160px
@@ -906,6 +919,8 @@
 			&--three
 				right: 50%
 				top: 120px
+				+r(1580)
+					right: 15%
 
 				+r(1380)
 					top: 90px
@@ -932,6 +947,14 @@
 				right: -40%
 				top: 510px
 
+				+r(1580)
+					right: -60%
+					padding: 15px
+
+					.main--products__text
+						font-size: 16px
+						margin-bottom: 10px
+
 				+r(1380)
 					top: 350px
 
@@ -946,6 +969,7 @@
 					right: 98%
 					top: -6%
 					height: 215px
+					z-index: -1
 
 					+r(1380)
 						height: 160px
@@ -1021,33 +1045,33 @@
 					margin-bottom: 5px
 
 		&__img
-				display: flex
-				align-items: center
-				justify-content: center
-				margin-bottom: 12px
-				border-radius: 60px
-				background: var(--main-white)
-				height: 55px
+			display: flex
+			align-items: center
+			justify-content: center
+			margin-bottom: 12px
+			border-radius: 60px
+			background: var(--main-white)
+			height: 55px
+
+			+r(1380)
+				height: 35px
+				margin-bottom: 5px
+
+			&:hover
+				animation: animateHoverImg 0.6s forwards
+
+			&:not(:hover)
+				animation: animateOutImg 0.6s forwards
+
+			&:last-child
+				margin-bottom: 0
+
+			img
+				height: 30px
+				max-width: 70%
 
 				+r(1380)
-					height: 35px
-					margin-bottom: 5px
-
-				&:hover
-					animation: animateHoverImg 0.6s forwards
-
-				&:not(:hover)
-					animation: animateOutImg 0.6s forwards
-
-				&:last-child
-					margin-bottom: 0
-
-				img
-					height: 30px
-					max-width: 70%
-
-					+r(1380)
-						height: 20px
+					height: 20px
 
 		&__line
 			position: absolute
@@ -1130,7 +1154,7 @@
 				bottom: 0
 				z-index: 1
 				width: 155%
-				transition: all .4s
+				transition: all 2s
 
 				+r(1380)
 					width: 140%
@@ -1255,6 +1279,9 @@
 					right: 10%
 					opacity: 1
 
+					+r(1580)
+						right: -20%
+
 					+r(480)
 						right: 0
 
@@ -1273,7 +1300,6 @@
 						left: 100%
 
 	&--contacts
-		background-image: url(../img/main--contacts.png)
 		background-position: center bottom
 		transition: margin 2s, right 2s !important
 		background-color: #fff
@@ -1287,7 +1313,6 @@
 			left: 0
 			min-width: 100%
 			min-height: 100vh
-			transform: rotateY(-180deg)
 			z-index: -1
 
 		&.swiper-slide-prev

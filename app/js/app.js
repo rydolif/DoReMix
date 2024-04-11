@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				simulateTouch: false,
 				mousewheel: {
 						eventsTarged: '.wrap',
-						thresholdTime: 1000 // Час для прокрутки колесом миші
+						thresholdTime: 2000 // Час для прокрутки колесом миші
 				},
-				speed: 600,
+				speed: 2000,
 				on: {
 					slideChangeTransitionStart: function () {
 							nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				simulateTouch: false,
 				mousewheel: {
 						eventsTarged: '.nested-slider',
-						thresholdTime: 1000 // Час для прокрутки колесом миші
+						thresholdTime: 2000 // Час для прокрутки колесом миші
 				},
-				speed: 1000,
+				speed: 2000,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');

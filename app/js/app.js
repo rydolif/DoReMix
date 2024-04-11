@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		//----------------------Slider nav-----------------------
 			const slideLinks = document.querySelectorAll('.header__link');
 			const footerLink = document.querySelectorAll('.main--footer__link');
-			// const pagination = document.querySelectorAll('.pagination__bullet');
+			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
 				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
@@ -207,26 +207,26 @@ document.addEventListener("DOMContentLoaded", function() {
 				});
 			});
 
-			// pagination.forEach(function(link) {
-			// 	link.addEventListener('click', function(e) {
-			// 		e.preventDefault();
-			// 		const slideIndex = parseInt(this.getAttribute('data-slide'));
-			// 		const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+			pagination.forEach(function(link) {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const slideIndex = parseInt(this.getAttribute('data-slide'));
+					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
 
-			// 		if (slideIndexNested === 5) {
-			// 			externalSwiper.slideTo(5);
-			// 		} 
-			// 		nestedSwiper.slideTo(slideIndexNested);
-			// 		externalSwiper.slideTo(slideIndex);
+					if (slideIndexNested === 5) {
+						externalSwiper.slideTo(5);
+					} 
+					nestedSwiper.slideTo(slideIndexNested);
+					externalSwiper.slideTo(slideIndex);
 
 					
-			// 		pagination.forEach(function(item) {
-			// 			item.classList.remove('header__link--active')
-			// 		});
-			// 		this.classList.add('header__link--active')
+					pagination.forEach(function(item) {
+						item.classList.remove('header__link--active')
+					});
+					this.classList.add('header__link--active')
 
-			// 	});
-			// });
+				});
+			});
 		}
 
 	//----------------------FIXED-HEADER-----------------------

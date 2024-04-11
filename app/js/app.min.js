@@ -41,10 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
 						thresholdTime: 1000 // Час для прокрутки колесом миші
 				},
 				speed: 600,
-				pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
-				},
 				on: {
 					slideChangeTransitionStart: function () {
 							nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
@@ -100,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		//----------------------Slider nav-----------------------
 			const slideLinks = document.querySelectorAll('.header__link');
 			const footerLink = document.querySelectorAll('.main--footer__link');
-			const pagination = document.querySelectorAll('.pagination__bullet');
+			// const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
 				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
@@ -116,15 +112,15 @@ document.addEventListener("DOMContentLoaded", function() {
 					}
 				});
 
-				pagination.forEach(function(link) {
-					const slideIndex = parseInt(link.getAttribute('data-slide'));
-					if(dataAttribute == slideIndex) {
-						pagination.forEach(function(item) {
-							item.classList.remove('pagination__bullet--active')
-						});
-						link.classList.add('pagination__bullet--active')
-					}
-				});
+				// pagination.forEach(function(link) {
+				// 	const slideIndex = parseInt(link.getAttribute('data-slide'));
+				// 	if(dataAttribute == slideIndex) {
+				// 		pagination.forEach(function(item) {
+				// 			item.classList.remove('pagination__bullet--active')
+				// 		});
+				// 		link.classList.add('pagination__bullet--active')
+				// 	}
+				// });
 
 			});
 
@@ -139,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
 						slideLinks.forEach(function(item) {
 							item.classList.remove('header__link--active')
 						});
-						pagination.forEach(function(item) {
-							item.classList.remove('pagination__bullet--active')
-						});
+						// pagination.forEach(function(item) {
+						// 	item.classList.remove('pagination__bullet--active')
+						// });
 						time.classList.add('header__link--active')
 						bullettime.classList.add('pagination__bullet--active')
 					} else {
@@ -154,15 +150,15 @@ document.addEventListener("DOMContentLoaded", function() {
 								link.classList.add('header__link--active')
 							}
 						});
-						pagination.forEach(function(link) {
-							const slideIndex = parseInt(link.getAttribute('data-slide'));
-							if(dataAttribute == slideIndex) {
-								pagination.forEach(function(item) {
-									item.classList.remove('pagination__bullet--active')
-								});
-								link.classList.add('pagination__bullet--active')
-							}
-						});
+						// pagination.forEach(function(link) {
+						// 	const slideIndex = parseInt(link.getAttribute('data-slide'));
+						// 	if(dataAttribute == slideIndex) {
+						// 		pagination.forEach(function(item) {
+						// 			item.classList.remove('pagination__bullet--active')
+						// 		});
+						// 		link.classList.add('pagination__bullet--active')
+						// 	}
+						// });
 					}
 				}
 			});
@@ -207,26 +203,26 @@ document.addEventListener("DOMContentLoaded", function() {
 				});
 			});
 
-			pagination.forEach(function(link) {
-				link.addEventListener('click', function(e) {
-					e.preventDefault();
-					const slideIndex = parseInt(this.getAttribute('data-slide'));
-					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+			// pagination.forEach(function(link) {
+			// 	link.addEventListener('click', function(e) {
+			// 		e.preventDefault();
+			// 		const slideIndex = parseInt(this.getAttribute('data-slide'));
+			// 		const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
 
-					if (slideIndexNested === 5) {
-						externalSwiper.slideTo(5);
-					} 
-					nestedSwiper.slideTo(slideIndexNested);
-					externalSwiper.slideTo(slideIndex);
+			// 		if (slideIndexNested === 5) {
+			// 			externalSwiper.slideTo(5);
+			// 		} 
+			// 		nestedSwiper.slideTo(slideIndexNested);
+			// 		externalSwiper.slideTo(slideIndex);
 
 					
-					pagination.forEach(function(item) {
-						item.classList.remove('header__link--active')
-					});
-					this.classList.add('header__link--active')
+			// 		pagination.forEach(function(item) {
+			// 			item.classList.remove('header__link--active')
+			// 		});
+			// 		this.classList.add('header__link--active')
 
-				});
-			});
+			// 	});
+			// });
 		}
 
 	//----------------------FIXED-HEADER-----------------------

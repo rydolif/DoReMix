@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(document.querySelector('.wrap')) {
 		
 			var externalSwiper = new Swiper('.wrap', {
-				lazy: true,
 				slidesPerView: "auto",
 				spaceBetween: 0,
 				effect: 'fade',
+				simulateTouch: false,
 				mousewheel: {
 						eventsTarged: '.wrap',
 						thresholdTime: 1000 // Час для прокрутки колесом миші
@@ -46,19 +46,19 @@ document.addEventListener("DOMContentLoaded", function() {
 						clickable: true,
 				},
 				on: {
-						slideChangeTransitionStart: function () {
-								nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
-						},
-						slideChangeTransitionEnd: function () {
-								nestedSwiper.mousewheel.enable(); // Увімкнення прокрутки миші для внутрішнього слайдера
-						}
+					slideChangeTransitionStart: function () {
+							nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
+					},
+					slideChangeTransitionEnd: function () {
+							nestedSwiper.mousewheel.enable(); // Увімкнення прокрутки миші для внутрішнього слайдера
+					},
 				}
 			});
 			
 			var nestedSwiper = new Swiper('.nested-slider', {
-				lazy: true,
 				slidesPerView: "auto",
 				spaceBetween: 0,
+				simulateTouch: false,
 				mousewheel: {
 						eventsTarged: '.nested-slider',
 						thresholdTime: 1000 // Час для прокрутки колесом миші

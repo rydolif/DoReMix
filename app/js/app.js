@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		//----------------------Slider nav-----------------------
 			const slideLinks = document.querySelectorAll('.header__link');
 			const footerLink = document.querySelectorAll('.main--footer__link');
-			// const pagination = document.querySelectorAll('.pagination__bullet');
+			const pagination = document.querySelectorAll('.pagination__bullet');
 
 			externalSwiper.on('slideChange', function () {
 				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
@@ -112,15 +112,15 @@ document.addEventListener("DOMContentLoaded", function() {
 					}
 				});
 
-				// pagination.forEach(function(link) {
-				// 	const slideIndex = parseInt(link.getAttribute('data-slide'));
-				// 	if(dataAttribute == slideIndex) {
-				// 		pagination.forEach(function(item) {
-				// 			item.classList.remove('pagination__bullet--active')
-				// 		});
-				// 		link.classList.add('pagination__bullet--active')
-				// 	}
-				// });
+				pagination.forEach(function(link) {
+					const slideIndex = parseInt(link.getAttribute('data-slide'));
+					if(dataAttribute == slideIndex) {
+						pagination.forEach(function(item) {
+							item.classList.remove('pagination__bullet--active')
+						});
+						link.classList.add('pagination__bullet--active')
+					}
+				});
 
 			});
 
@@ -135,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
 						slideLinks.forEach(function(item) {
 							item.classList.remove('header__link--active')
 						});
-						// pagination.forEach(function(item) {
-						// 	item.classList.remove('pagination__bullet--active')
-						// });
+						pagination.forEach(function(item) {
+							item.classList.remove('pagination__bullet--active')
+						});
 						time.classList.add('header__link--active')
 						bullettime.classList.add('pagination__bullet--active')
 					} else {
@@ -150,15 +150,15 @@ document.addEventListener("DOMContentLoaded", function() {
 								link.classList.add('header__link--active')
 							}
 						});
-						// pagination.forEach(function(link) {
-						// 	const slideIndex = parseInt(link.getAttribute('data-slide'));
-						// 	if(dataAttribute == slideIndex) {
-						// 		pagination.forEach(function(item) {
-						// 			item.classList.remove('pagination__bullet--active')
-						// 		});
-						// 		link.classList.add('pagination__bullet--active')
-						// 	}
-						// });
+						pagination.forEach(function(link) {
+							const slideIndex = parseInt(link.getAttribute('data-slide'));
+							if(dataAttribute == slideIndex) {
+								pagination.forEach(function(item) {
+									item.classList.remove('pagination__bullet--active')
+								});
+								link.classList.add('pagination__bullet--active')
+							}
+						});
 					}
 				}
 			});

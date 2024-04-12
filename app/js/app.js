@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						eventsTarged: '.wrap',
 						thresholdTime: 2000 // Час для прокрутки колесом миші
 				},
-				speed: 1800,
+				speed: 1600,
 				on: {
 					slideChangeTransitionStart: function () {
 							nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера

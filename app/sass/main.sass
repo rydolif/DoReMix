@@ -1227,8 +1227,8 @@
 
 			&__bg
 				position: absolute
-				left: 100%
-				min-height: 100vh
+				right: -200%
+				// min-height: 100vh
 				top: 0
 				width: 200%
 
@@ -1310,11 +1310,20 @@
 
 	&--contacts
 		background-position: center bottom
-		transition: margin 2s, right 2s !important
+		transition: margin 1.8s, right 1.8s !important
 		background-color: #fff
 
 		.main__container
 			justify-content: flex-start
+
+		&__gradient
+			position: absolute
+			left: 0
+			top: 0
+			z-index: -1
+			width: 100%
+			min-height: 100vh
+			transform: scaleX(-1)
 
 		&__bg
 			position: absolute
@@ -1443,10 +1452,6 @@
 			width: 100%
 			text-align: center
 			padding: 100px 20px
-
-		// &.swiper-slide-active
-		// 	margin-left: -40%
-		// 	transition: all 1.6s
 
 		.main__container
 			justify-content: space-between

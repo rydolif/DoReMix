@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					simulateTouch: false,
 					mousewheel: {
 							eventsTarged: '.wrap',
-							thresholdTime: 1600 // Час для прокрутки колесом миші
+							thresholdTime: 500 // Час для прокрутки колесом миші
 					},
 					speed: 1600,
 					on: {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					simulateTouch: false,
 					mousewheel: {
 							eventsTarged: '.nested-slider',
-							thresholdTime: 1600 // Час для прокрутки колесом миші
+							thresholdTime: 500 // Час для прокрутки колесом миші
 					},
 					speed: 1800,
 				});

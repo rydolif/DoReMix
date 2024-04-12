@@ -29,189 +29,186 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 
 	//----------------------Slider-----------------------
-		if(document.querySelector('.wrap')) {
+		const slider = () => {
+			if(document.querySelector('.wrap')) {
 		
-			var externalSwiper = new Swiper('.wrap', {
-				slidesPerView: "auto",
-				spaceBetween: 0,
-				effect: 'fade',
-				simulateTouch: false,
-				mousewheel: {
-						eventsTarged: '.wrap',
-						thresholdTime: 2000 // Час для прокрутки колесом миші
-				},
-				speed: 1600,
-				on: {
-					slideChangeTransitionStart: function () {
-							nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
+				var externalSwiper = new Swiper('.wrap', {
+					slidesPerView: "auto",
+					spaceBetween: 0,
+					effect: 'fade',
+					simulateTouch: false,
+					mousewheel: {
+							eventsTarged: '.wrap',
+							thresholdTime: 1600 // Час для прокрутки колесом миші
 					},
-					slideChangeTransitionEnd: function () {
-							nestedSwiper.mousewheel.enable(); // Увімкнення прокрутки миші для внутрішнього слайдера
-					},
-				}
-			});
-			
-			var nestedSwiper = new Swiper('.nested-slider', {
-				slidesPerView: "auto",
-				spaceBetween: 0,
-				simulateTouch: false,
-				mousewheel: {
-						eventsTarged: '.nested-slider',
-						thresholdTime: 1800 // Час для прокрутки колесом миші
-				},
-				speed: 1800,
-			});
-
-			var innerSliderContainer = document.querySelector('.nested-slider');
-
-			innerSliderContainer.addEventListener('mouseenter', function() {
-					externalSwiper.mousewheel.disable();
-			});
-
-			nestedSwiper.on('slideChange', function() {
-				var activeSlideIndex = nestedSwiper.activeIndex;
-
-				if (activeSlideIndex === 0) {
-					setTimeout(() => {
-						externalSwiper.mousewheel.enable(); 
-					}, 1000)
-				}  else {
-					externalSwiper.mousewheel.disable();
-				}
-			});
-			
-			externalSwiper.on('slideChange', function() {
-				var activeIndex = externalSwiper.activeIndex;
-				console.log(activeIndex)
-
-			 if (activeIndex === 4) {
-					setTimeout(() => {
-						externalSwiper.mousewheel.enable();
-						externalSwiper.mousewheel.enable();
-					}, 500)
-
-				}
-			});
-		
-		//----------------------Slider nav-----------------------
-			const slideLinks = document.querySelectorAll('.header__link');
-			const footerLink = document.querySelectorAll('.main--footer__link');
-			const pagination = document.querySelectorAll('.pagination__bullet');
-
-			externalSwiper.on('slideChange', function () {
-				const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
-				const dataAttribute = activeSlide.getAttribute('data-slide');
-
-				slideLinks.forEach(function(link) {
-					const slideIndex = parseInt(link.getAttribute('data-slide'));
-					if(dataAttribute == slideIndex) {
-						slideLinks.forEach(function(item) {
-							item.classList.remove('header__link--active')
-						});
-						link.classList.add('header__link--active')
-						externalSwiper.mousewheel.enable();
+					speed: 1600,
+					on: {
+						slideChangeTransitionStart: function () {
+								nestedSwiper.mousewheel.disable(); // Вимкнення прокрутки миші для внутрішнього слайдера
+						},
+						slideChangeTransitionEnd: function () {
+								nestedSwiper.mousewheel.enable(); // Увімкнення прокрутки миші для внутрішнього слайдера
+						},
 					}
 				});
+				
+				var nestedSwiper = new Swiper('.nested-slider', {
+					slidesPerView: "auto",
+					spaceBetween: 0,
+					simulateTouch: false,
+					mousewheel: {
+							eventsTarged: '.nested-slider',
+							thresholdTime: 1600 // Час для прокрутки колесом миші
+					},
+					speed: 1800,
+				});
+	
+				var innerSliderContainer = document.querySelector('.nested-slider');
+	
+				innerSliderContainer.addEventListener('mouseenter', function() {
+						externalSwiper.mousewheel.disable();
+				});
+	
+				externalSwiper.on('slideChange', function() {
+					var activeIndex = externalSwiper.activeIndex;
+					if (activeIndex === 5) {
+						setTimeout(() => {
+							externalSwiper.mousewheel.enable();
+							nestedSwiper.slideTo(0);
 
-				pagination.forEach(function(link) {
-					const slideIndex = parseInt(link.getAttribute('data-slide'));
-					if(dataAttribute == slideIndex) {
-						pagination.forEach(function(item) {
-							item.classList.remove('pagination__bullet--active')
-						});
-						link.classList.add('pagination__bullet--active')
+						}, 500)
 					}
 				});
-
-			});
-
-			nestedSwiper.on('slideChange', function () {
-				const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
-				if (activeSlide) {
+			
+				nestedSwiper.on('slideChange', function() {
+					var activeSlideIndex = nestedSwiper.activeIndex;
+					externalSwiper.mousewheel.disable();
+					if (activeSlideIndex === 0) {
+						setTimeout(() => {
+							externalSwiper.mousewheel.enable(); 
+						}, 500)
+					}  else {
+						externalSwiper.mousewheel.disable();
+					}
+				});
+			//----------------------Slider nav-----------------------
+				const slideLinks = document.querySelectorAll('.header__link');
+				const footerLink = document.querySelectorAll('.main--footer__link');
+				const pagination = document.querySelectorAll('.pagination__bullet');
+	
+				externalSwiper.on('slideChange', function () {
+					const activeSlide = externalSwiper.slides[externalSwiper.activeIndex];
 					const dataAttribute = activeSlide.getAttribute('data-slide');
-			
-					if(nestedSwiper.activeIndex === 0 ) {
-						const time = document.querySelector('.time');
-						const bullettime = document.querySelector('.bullettime');
+	
+					slideLinks.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							slideLinks.forEach(function(item) {
+								item.classList.remove('header__link--active')
+							});
+							link.classList.add('header__link--active')
+							externalSwiper.mousewheel.enable();
+						}
+					});
+	
+					pagination.forEach(function(link) {
+						const slideIndex = parseInt(link.getAttribute('data-slide'));
+						if(dataAttribute == slideIndex) {
+							pagination.forEach(function(item) {
+								item.classList.remove('pagination__bullet--active')
+							});
+							link.classList.add('pagination__bullet--active')
+						}
+					});
+	
+				});
+	
+				nestedSwiper.on('slideChange', function () {
+					const activeSlide = nestedSwiper.slides[nestedSwiper.activeIndex];
+					if (activeSlide) {
+						const dataAttribute = activeSlide.getAttribute('data-slide');
+				
+						if(nestedSwiper.activeIndex === 0 ) {
+							const time = document.querySelector('.time');
+							const bullettime = document.querySelector('.bullettime');
+							slideLinks.forEach(function(item) {
+								item.classList.remove('header__link--active')
+							});
+							pagination.forEach(function(item) {
+								item.classList.remove('pagination__bullet--active')
+							});
+							time.classList.add('header__link--active')
+							bullettime.classList.add('pagination__bullet--active')
+						} else {
+							slideLinks.forEach(function(link) {
+								const slideIndex = parseInt(link.getAttribute('data-slide'));
+								if(dataAttribute == slideIndex) {
+									slideLinks.forEach(function(item) {
+										item.classList.remove('header__link--active')
+									});
+									link.classList.add('header__link--active')
+								}
+							});
+							pagination.forEach(function(link) {
+								const slideIndex = parseInt(link.getAttribute('data-slide'));
+								if(dataAttribute == slideIndex) {
+									pagination.forEach(function(item) {
+										item.classList.remove('pagination__bullet--active')
+									});
+									link.classList.add('pagination__bullet--active')
+								}
+							});
+						}
+					}
+				});
+	
+				slideLinks.forEach(function(link) {
+					link.addEventListener('click', function(e) {
+						e.preventDefault();
+						const slideIndex = parseInt(this.getAttribute('data-slide'));
+						const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+	
+						if (slideIndexNested === 5) {
+							externalSwiper.slideTo(5);
+							externalSwiper.mousewheel.enable();
+						} 
+						nestedSwiper.slideTo(slideIndexNested);
+						externalSwiper.slideTo(slideIndex);
+	
 						slideLinks.forEach(function(item) {
 							item.classList.remove('header__link--active')
 						});
-						pagination.forEach(function(item) {
-							item.classList.remove('pagination__bullet--active')
-						});
-						time.classList.add('header__link--active')
-						bullettime.classList.add('pagination__bullet--active')
-					} else {
-						slideLinks.forEach(function(link) {
-							const slideIndex = parseInt(link.getAttribute('data-slide'));
-							if(dataAttribute == slideIndex) {
-								slideLinks.forEach(function(item) {
-									item.classList.remove('header__link--active')
-								});
-								link.classList.add('header__link--active')
-							}
-						});
-						pagination.forEach(function(link) {
-							const slideIndex = parseInt(link.getAttribute('data-slide'));
-							if(dataAttribute == slideIndex) {
-								pagination.forEach(function(item) {
-									item.classList.remove('pagination__bullet--active')
-								});
-								link.classList.add('pagination__bullet--active')
-							}
-						});
-					}
-				}
-			});
-
-			slideLinks.forEach(function(link) {
-				link.addEventListener('click', function(e) {
-					e.preventDefault();
-					const slideIndex = parseInt(this.getAttribute('data-slide'));
-					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-
-					if (slideIndexNested === 5) {
-						externalSwiper.slideTo(5);
-					} 
-					nestedSwiper.slideTo(slideIndexNested);
-					externalSwiper.slideTo(slideIndex);
-
-					slideLinks.forEach(function(item) {
-						item.classList.remove('header__link--active')
-					});
-					this.classList.add('header__link--active')
-
-				});
-			});
-
-			footerLink.forEach(function(link) {
-				link.addEventListener('click', function(e) {
-					e.preventDefault();
-					const slideIndex = parseInt(this.getAttribute('data-slide'));
-					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-					nestedSwiper.slideTo(0);
-
-					if (slideIndexNested === 5) {
-						externalSwiper.slideTo(5);
-					} 
-					nestedSwiper.slideTo(slideIndexNested);
-					externalSwiper.slideTo(slideIndex);
-
-					footerLink.forEach(function(item) {
-						item.classList.remove('header__link--active')
-					});
-					// Очікуємо завершення анімації для оновлення слайдера
-					// nestedSwiper.on('transitionEnd', function() {
-					// 		nestedSwiper.update(); // Оновлюємо вкладений слайдер
-					// });
-
-					externalSwiper.on('transitionEnd', function() {
-							externalSwiper.update(); // Оновлюємо зовнішній слайдер
+						this.classList.add('header__link--active')
+	
 					});
 				});
-			});
-
+	
+				footerLink.forEach(function(link) {
+					link.addEventListener('click', function(e) {
+							e.preventDefault();
+							const slideIndex = parseInt(this.getAttribute('data-slide'));
+							const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+							if(isNaN(slideIndexNested)) {
+								nestedSwiper.slideTo(0);
+								externalSwiper.slideTo(0);
+								nestedSwiper.on('slideChangeTransitionEnd', function() {
+									// externalSwiper.slideTo(slideIndex);
+									externalSwiper.mousewheel.enable();
+								// 	footerLink.forEach(function(item) {
+								// 			item.classList.remove('header__link--active');
+								// 	});
+								});
+							} else {
+								nestedSwiper.slideTo(slideIndexNested);
+							}
+	
+					});
+	
+				});
+			}
 		}
+		slider()
+
 
 	//----------------------FIXED-HEADER-----------------------
 		const headerFixed = (headerFixed, headerActive) => {

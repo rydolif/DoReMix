@@ -71,10 +71,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 				externalSwiper.on('slideChange', function() {
 					var activeIndex = externalSwiper.activeIndex;
-					if (activeIndex === 5) {
+					console.log(activeIndex)
+					if (activeIndex === 4) {
 						setTimeout(() => {
 							externalSwiper.mousewheel.enable();
-							nestedSwiper.slideTo(0);
+							// nestedSwiper.slideTo(0);
 
 						}, 500)
 					}
@@ -198,10 +199,8 @@ document.addEventListener("DOMContentLoaded", function() {
 							} else {
 								nestedSwiper.slideTo(slideIndexNested);
 							}
-	
+						});
 					});
-	
-				});
 			}
 		}
 		slider()

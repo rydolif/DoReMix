@@ -1090,7 +1090,6 @@
 			width: 270%
 			background: var(--secondary-light-grey)
 			z-index: 100
-			transition: all .4s
 
 			+r(2000)
 				left: -115%
@@ -1122,7 +1121,8 @@
 				height: 100%
 				width: 18%
 				background: linear-gradient(90deg, #9a1a51 0%, #631f89 83.7%)
-				+transition
+				transition: all 1.6s
+
 
 				+r(2000)
 					width: 10%
@@ -1139,7 +1139,7 @@
 				height: 20px
 				border-radius: 50%
 				background: linear-gradient(90deg, #9a1a51 0%, #631f89 83.7%)
-				+transition
+				transition: all 1.6s
 		
 				+r(2000)
 					left: 10%
@@ -1442,7 +1442,11 @@
 		+r(576)
 			width: 100%
 			text-align: center
-			padding: 100px 20px 
+			padding: 100px 20px
+
+		// &.swiper-slide-active
+		// 	margin-left: -40%
+		// 	transition: all 1.6s
 
 		.main__container
 			justify-content: space-between

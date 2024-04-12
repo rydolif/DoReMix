@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				simulateTouch: false,
 				mousewheel: {
 						eventsTarged: '.nested-slider',
-						thresholdTime: 2000 // Час для прокрутки колесом миші
+						thresholdTime: 1800 // Час для прокрутки колесом миші
 				},
-				speed: 2000,
+				speed: 1800,
 			});
 
 			var innerSliderContainer = document.querySelector('.nested-slider');
@@ -70,8 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			nestedSwiper.on('slideChange', function() {
 				var activeSlideIndex = nestedSwiper.activeIndex;
-				var activeIndex = externalSwiper.activeIndex;
-				console.log(activeIndex)
 
 				if (activeSlideIndex === 0) {
 					setTimeout(() => {
@@ -89,7 +87,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			 if (activeIndex === 4) {
 					setTimeout(() => {
 						externalSwiper.mousewheel.enable();
+						externalSwiper.mousewheel.enable();
 					}, 500)
+
 				}
 			});
 		
@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 							item.classList.remove('header__link--active')
 						});
 						link.classList.add('header__link--active')
+						externalSwiper.mousewheel.enable();
 					}
 				});
 
@@ -188,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					e.preventDefault();
 					const slideIndex = parseInt(this.getAttribute('data-slide'));
 					const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
+					nestedSwiper.slideTo(0);
 
 					if (slideIndexNested === 5) {
 						externalSwiper.slideTo(5);
@@ -198,31 +200,17 @@ document.addEventListener("DOMContentLoaded", function() {
 					footerLink.forEach(function(item) {
 						item.classList.remove('header__link--active')
 					});
-					this.classList.add('header__link--active')
+					// Очікуємо завершення анімації для оновлення слайдера
+					// nestedSwiper.on('transitionEnd', function() {
+					// 		nestedSwiper.update(); // Оновлюємо вкладений слайдер
+					// });
 
+					externalSwiper.on('transitionEnd', function() {
+							externalSwiper.update(); // Оновлюємо зовнішній слайдер
+					});
 				});
 			});
 
-			// pagination.forEach(function(link) {
-			// 	link.addEventListener('click', function(e) {
-			// 		e.preventDefault();
-			// 		const slideIndex = parseInt(this.getAttribute('data-slide'));
-			// 		const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
-
-			// 		if (slideIndexNested === 5) {
-			// 			externalSwiper.slideTo(5);
-			// 		} 
-			// 		nestedSwiper.slideTo(slideIndexNested);
-			// 		externalSwiper.slideTo(slideIndex);
-
-					
-			// 		pagination.forEach(function(item) {
-			// 			item.classList.remove('header__link--active')
-			// 		});
-			// 		this.classList.add('header__link--active')
-
-			// 	});
-			// });
 		}
 
 	//----------------------FIXED-HEADER-----------------------

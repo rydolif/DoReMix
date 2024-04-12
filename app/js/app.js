@@ -184,19 +184,16 @@ document.addEventListener("DOMContentLoaded", function() {
 				});
 	
 				footerLink.forEach(function(link) {
+					let i = link.getAttribute('data-slide')
 					link.addEventListener('click', function(e) {
 							e.preventDefault();
 							const slideIndex = parseInt(this.getAttribute('data-slide'));
 							const slideIndexNested = parseInt(this.getAttribute('data-slide-nested'));
 							if(isNaN(slideIndexNested)) {
 								nestedSwiper.slideTo(0);
-								externalSwiper.slideTo(0);
+								externalSwiper.slideTo(i);
 								nestedSwiper.on('slideChangeTransitionEnd', function() {
-									// externalSwiper.slideTo(slideIndex);
 									externalSwiper.mousewheel.enable();
-								// 	footerLink.forEach(function(item) {
-								// 			item.classList.remove('header__link--active');
-								// 	});
 								});
 							} else {
 								nestedSwiper.slideTo(slideIndexNested);

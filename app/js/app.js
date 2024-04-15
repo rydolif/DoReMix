@@ -36,10 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					slidesPerView: "auto",
 					spaceBetween: 0,
 					effect: 'fade',
-					touch: {
-						enabled: false,
-						simulateTouch: false
-					},
+					simulateTouch: false,
 					mousewheel: {
 							eventsTarged: '.wrap',
 							thresholdTime: 500 // Час для прокрутки колесом миші
@@ -58,13 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
 				var nestedSwiper = new Swiper('.nested-slider', {
 					slidesPerView: "auto",
 					spaceBetween: 0,
-					touch: {
-						enabled: false,
-						simulateTouch: false
-					},
+					simulateTouch: false,
 					mousewheel: {
-							eventsTarged: '.nested-slider',
-							thresholdTime: 500 // Час для прокрутки колесом миші
+						eventsTarged: '.nested-slider',
+						thresholdTime: 500 // Час для прокрутки колесом миші
 					},
 					speed: 1800,
 				});
@@ -77,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 				externalSwiper.on('slideChange', function() {
 					var activeIndex = externalSwiper.activeIndex;
-					console.log(activeIndex)
 					if (activeIndex === 4) {
 						setTimeout(() => {
 							externalSwiper.mousewheel.enable();
@@ -93,9 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
 					if (activeSlideIndex === 0) {
 						setTimeout(() => {
 							externalSwiper.mousewheel.enable(); 
+							externalSwiper.allowTouchMove = true;
 						}, 500)
 					}  else {
 						externalSwiper.mousewheel.disable();
+						externalSwiper.allowTouchMove = false;
 					}
 				});
 			//----------------------Slider nav-----------------------

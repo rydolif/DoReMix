@@ -36,7 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
 					slidesPerView: "auto",
 					spaceBetween: 0,
 					effect: 'fade',
-					simulateTouch: false,
+					touch: {
+						enabled: false,
+						simulateTouch: false
+					},
 					mousewheel: {
 							eventsTarged: '.wrap',
 							thresholdTime: 500 // Час для прокрутки колесом миші
@@ -55,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
 				var nestedSwiper = new Swiper('.nested-slider', {
 					slidesPerView: "auto",
 					spaceBetween: 0,
-					simulateTouch: false,
+					touch: {
+						enabled: false,
+						simulateTouch: false
+					},
 					mousewheel: {
 							eventsTarged: '.nested-slider',
 							thresholdTime: 500 // Час для прокрутки колесом миші
